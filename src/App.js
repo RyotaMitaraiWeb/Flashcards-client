@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 
 function App() {
     return (
-        <>
+        <div class="app dark-theme">
             <Routes>
                 <Route path="/" element={<h2>Home</h2>}></Route>
                 <Route path="/about" element={<h2>За нас</h2>}></Route>
@@ -14,7 +14,7 @@ function App() {
             </Routes>
             <Header />
             <Footer />
-        </>
+        </div>
     );
 }
 

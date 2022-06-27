@@ -1,0 +1,20 @@
+$background-light: #E8E8E8;
+$background-dark: #363636;
+$component-color-light: white;
+$component-color-dark: #212121;
+
+@mixin text-color-light {
+    color: black;
+    opacity: 1;
+}
+
+@mixin text-color-dark {
+    color: white;
+    opacity: 0.87;
+}
+
+$theme-purple: #5F3690;
+$theme-blue: #0F5F71;
+$theme-pink: #A4055B;
+$theme-green: #0E7206;
+$theme-brown: #953E0F;
