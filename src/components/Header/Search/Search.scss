@@ -1,0 +1,28 @@
+[for="search"] {
+    width: 30%;
+    border-radius: 14px;
+    color: #4A4848;
+    border: 3px solid #C5BDBD;
+    background: white;
+    cursor: text;
+    padding: 14px;
+
+    .fa {
+        font-size: 1.25rem;
+    }
+
+    #search {
+        border: none;
+        outline: none;
+        height: 100%;
+        width: 75%;
+        margin-left: 5px;
+        &::placeholder {
+            font-style: italic;
+        }
+    }
+}
+
+#search::before::placeholder {
+    content: 'test';
+}

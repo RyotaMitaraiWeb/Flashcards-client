@@ -1,0 +1,16 @@
+li.nav-link {
+    display: inline-block;
+    padding: 0 15px;
+    
+    a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active {
+            opacity: 0.5;
+        }
+    }
+}

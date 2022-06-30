@@ -1,6 +1,15 @@
-@import './variables';
+@import "./variables";
 
+* {
+    box-sizing: border-box;
+}
 .app {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
     &.light-theme {
         background-color: $background-light;
     }
