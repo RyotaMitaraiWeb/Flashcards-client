@@ -1,11 +1,18 @@
 [for="search"] {
-    width: 30%;
+    width: 20%;
     border-radius: 14px;
     color: #4A4848;
     border: 3px solid #C5BDBD;
     background: white;
     cursor: text;
-    padding: 14px;
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+    font-size: 0.8rem;
+
+    @media only screen and (max-width: 1060px) {
+        width: 80%;
+    }
 
     .fa {
         font-size: 1.25rem;
@@ -15,7 +22,8 @@
         border: none;
         outline: none;
         height: 100%;
-        width: 75%;
+        width: 100%;
+        border-radius: 14px;
         margin-left: 5px;
         &::placeholder {
             font-style: italic;

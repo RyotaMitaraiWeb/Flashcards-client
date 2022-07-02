@@ -6,6 +6,7 @@
 .app {
     display: flex;
     min-height: 100vh;
+    min-width: 100%;
     flex-direction: column;
     justify-content: space-between;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -16,5 +17,10 @@
 
     &.dark-theme {
         background-color: $background-dark;
+    }
+
+    &.locked {
+        position: fixed;
+        top: 0;
     }
 }

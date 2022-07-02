@@ -3,12 +3,16 @@ import { Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import LoginBtn from './components/Login';
+import { useSelector } from 'react-redux/es/exports';
+import { isToggled } from './app/slices/mobileMenu';
+
 // import LogoutBtn from './components/Logout';
 // import TestComponent from './components/Test';
 
 function App() {
+    const toggled = useSelector(isToggled);
     return (
-        <div className="app light-theme">
+        <main className={(toggled ? "locked " : "") + "app light-theme"}>
             <Header />
             <Routes>
                 <Route path="/" element={<h2>Home</h2>}></Route>
@@ -16,28 +20,29 @@ function App() {
                 <Route path="/rules" element={<h2>Правила</h2>}></Route>
                 <Route path="/faq" element={<h2>Често задавани въпроси</h2>}></Route>
             </Routes>
-            <button onClick={register}>test</button>
+            {/* <button onClick={register}>test</button> */}
+            <h2>test</h2>
             <LoginBtn />
-            {/* <LogoutBtn /> */}
+            
             <Footer />
-        </div>
+        </main>
     );
 }
 
-async function register() {
-    const url = 'http://localhost:5500/register';
-    console.log('test')
-    const test = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'include',
-        headers: {
-            'Access-Control-Allow-Origin': true,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            name: 'test',
-        })
-    });
-}
+// async function register() {
+//     const url = 'http://localhost:5500/register';
+//     console.log('test')
+//     const test = await fetch(url, {
+//         method: 'POST',
+//         mode: 'cors',
+//         credentials: 'include',
+//         headers: {
+//             'Access-Control-Allow-Origin': true,
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//             name: 'test',
+//         })
+//     });
+// }
 export default App;
