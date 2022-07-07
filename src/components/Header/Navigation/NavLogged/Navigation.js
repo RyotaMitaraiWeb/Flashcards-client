@@ -18,12 +18,12 @@ export default function NavLogged() {
     return (
         <nav>
             <button onClick={toggleMenu} aria-label="Отвори навигационно меню"><Icon icon="bars" /></button>
-            <ul className={toggled ? "toggled" : null}>
+            <ul className={toggled ? "toggled" : null} onClick={toggleMenu}>
                 <NavItem href="/"><Icon icon="home" />Моите тестета</NavItem>
                 <NavItem href="/profile"><Icon icon="user-circle" />Моят профил</NavItem>
                 <NavItem href="/create"><Icon icon="plus" />Създай ново тесте</NavItem>
                 <NavItem href="/logout"><Icon icon="sign-out-alt" />Излез от профил</NavItem>
-                <button onClick={toggleMenu} className="close"><Icon icon="times" /> Затвори</button>
+                <button className="close"><Icon icon="times" /> Затвори</button>
             </ul>
         </nav>
     )
