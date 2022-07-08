@@ -2,15 +2,14 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import LoginBtn from './components/Login';
+import Login from './components/Login/Login';
 import { useSelector } from 'react-redux/es/exports';
-import { isToggled } from './app/slices/mobileMenu';
 
 // import LogoutBtn from './components/Logout';
 // import TestComponent from './components/Test';
 
 function App() {
-    const toggled = useSelector(isToggled);
+    const toggled = useSelector(state => state.modal.isToggled);
     return (
         <main className={(toggled ? "locked " : "") + "app light-theme"}>
             <Header />
@@ -19,11 +18,10 @@ function App() {
                 <Route path="/about" element={<h2>За нас</h2>}></Route>
                 <Route path="/rules" element={<h2>Правила</h2>}></Route>
                 <Route path="/faq" element={<h2>Често задавани въпроси</h2>}></Route>
+                <Route path="/login" element={<Login />}></Route>
             </Routes>
             {/* <button onClick={register}>test</button> */}
-            <h2>test</h2>
-            <LoginBtn />
-            
+            <h2>hi</h2>            
             <Footer />
         </main>
     );
