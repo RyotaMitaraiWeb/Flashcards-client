@@ -3,7 +3,7 @@ import './Navigation.scss';
 import NavItem from './NavItem/NavItem';
 import Icon from '../../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModal } from '../../../app/slices/mobileMenu';
+import { toggleModal, hideModal } from '../../../app/slices/mobileMenu';
 import NavLogged from './NavLogged/Navigation';
 import NavGuest from './NavGuest/Navigation';
 
@@ -17,11 +17,14 @@ export default function Navigation() {
         dispatch(toggleModal(!toggled));
     }
 
+    function hideMenu() {
+        dispatch(hideModal());
+    }
+
     return (
         <nav>
-            <button>login</button>
             <button onClick={toggleMenu} aria-label="Отвори навигационно меню"><Icon icon="bars" /></button>
-            <ul className={toggled ? "toggled" : null} onClick={toggleMenu}>
+            <ul className={toggled ? "toggled" : null} onClick={hideMenu}>
                 <NavItem href="/"><Icon icon="home" /> Моите тестета</NavItem>
                 { 
                     user.id !== '' 

@@ -8,10 +8,13 @@ const modalSlice = createSlice({
     reducers: {
         toggleModal(state, action) {
             state.isToggled = action.payload;
+        },
+        hideModal(state) {
+            state.isToggled = false;
         }
     }
 });
 
-export const { toggleModal } = modalSlice.actions;
-export const isToggled = state => state.modal.isToggled;
+export const { toggleModal, hideModal } = modalSlice.actions;
+// export const isToggled = state => state.modal.isToggled;
 export default modalSlice.reducer;

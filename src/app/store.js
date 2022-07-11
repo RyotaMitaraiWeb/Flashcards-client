@@ -4,9 +4,9 @@ import preferenceReducers from './slices/preferences';
 import userReducer from './slices/user';
 
 export const store = configureStore({
-  reducer: {
-    modal: reducer,
-    user: userReducer,
-    preferences: preferenceReducers,
-  },
+    reducer: {
+        modal: reducer,
+        user: userReducer,
+        preferences: preferenceReducers,
+    },
 });
