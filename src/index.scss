@@ -13,14 +13,57 @@
 
     &.light-theme {
         background-color: $background-light;
+        #container {
+            background-color: $component-color-light
+        }
+
+        .error {
+            color: #CC0000;
+        }
     }
 
     &.dark-theme {
         background-color: $background-dark;
+        #container {
+            background-color: $component-color-light;
+        }
+
+        .error {
+            color: rgba(251, 104, 104, 0.87);
+        }
     }
 
     &.locked {
         position: fixed;
         top: 0;
     }
+}
+
+.purple {
+    background-color: $theme-purple
+}
+
+.pink {
+    background-color: $theme-pink;
+}
+
+.green {
+    background-color: $theme-green;
+}
+
+.blue {
+    background-color: $theme-blue;
+}
+
+.brown {
+    background-color: $theme-brown;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    font-weight: bold;
+    text-align: center;
 }

@@ -9,8 +9,7 @@ $component-color-dark: #212121;
 }
 
 @mixin text-color-dark {
-    color: white;
-    opacity: 0.87;
+    color: rgba(255, 255, 255, 0.87);
 }
 
 $theme-purple: #5F3690;
