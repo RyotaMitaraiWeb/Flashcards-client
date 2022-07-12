@@ -10,8 +10,10 @@ import { useSelector } from 'react-redux/es/exports';
 
 function App() {
     const toggled = useSelector(state => state.modal.isToggled);
+    const preferences = useSelector(state => state.preferences);
+    const theme = preferences.theme + '-theme';
     return (
-        <main className={(toggled ? "locked " : "") + "app light-theme"}>
+        <main className={(toggled ? "locked " : "") + "app " + theme}>
             <Header />
             <Routes>
                 <Route path="/" element={<h2>Home</h2>}></Route>
@@ -20,8 +22,6 @@ function App() {
                 <Route path="/faq" element={<h2>Често задавани въпроси</h2>}></Route>
                 <Route path="/login" element={<Login />}></Route>
             </Routes>
-            {/* <button onClick={register}>test</button> */}
-            <h2>hi</h2>            
             <Footer />
         </main>
     );
