@@ -1,32 +1,76 @@
 import React, { useState } from 'react';
 import Container from '../Container/Container';
 import './Login.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../Icon/Icon';
-import { useSelector } from 'react-redux/es/exports';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 import Button from '../Button/Button';
+import authService from '../../services/auth';
+import { updateUser } from '../../app/slices/user';
+import { useEffect } from 'react';
+const { login } = authService;
 
 export default function Login() {
     const preferences = useSelector(state => state.preferences);
+    const user = useSelector(state => state.user);
     const theme = preferences.theme + '-theme';
+    
     const [error, updateError] = useState(false);
+    const [username, changeUsername] = useState('');
+    const [password, changePassword] = useState('');
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    document.title = 'Влез в твоя профил';
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const body = { username, password };
+        const { res, data } = await login(body);
+        if (res.status === 200) {
+            console.log(res);
+            console.log(data);
+            dispatch(updateUser(data));
+            navigate('/', { replace: true });
+        } else {
+            updateError(true);
+        }
+    }
+
+    function handleUsernameChange(event) {
+        const username = event.target.value;
+        changeUsername(username);
+    }
+
+    function handlePasswordChange(event) {
+        const password = event.target.value;
+        changePassword(password);
+    }
+
+    useEffect(() => {
+        console.log('loading');
+        if (user.id !== '') {
+            navigate('/', { replace: true });   
+        }
+
+    }, [navigate, user.id]);
+
     return (
         <Container>
             <h1>Влез в профил</h1>
-            <form id="login" className={theme}>
+            <form id="login" className={theme} onSubmit={handleSubmit}>
                 <div className="group">
                     <label htmlFor="username">Потребителско име</label>
-                    <input type="text" id="username" name="username" placeholder="Потребителско име" />
+                    <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} placeholder="Потребителско име" />
                 </div>
                 <div className="group">
                     <label htmlFor="password">Парола</label>
-                    <input type="password" id="password" name="password" placeholder="Парола" />
+                    <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Парола" />
                 </div>
                 <div className="group">
                     <p>Нямаш профил? <Link to="/register">Регистрирай се!</Link></p>
                 </div>
                 <Button><Icon icon="sign-in-alt"></Icon> Влез в профил</Button>
-                <p className={"error" + (!error ? " hidden" : null)}>Грешно потребителско име или парола!</p>
+                <p className={"error" + (!error ? " hidden" : "")}>Грешно потребителско име или парола!</p>
             </form>
         </Container>
     )
