@@ -6,6 +6,11 @@ async function login(body) {
     return { res, data };
 }
 
+async function register(body) {
+    const { res, data } = await post('/register', body);
+    return { res, data };
+}
+
 async function logout() {
     const { res } = await get('/logout');
     console.log(res);
@@ -13,6 +18,7 @@ async function logout() {
 }
 
 const authService = {
+    register,
     login,
     logout,
 };
