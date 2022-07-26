@@ -2,14 +2,14 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useEffect } from 'react';
+import Login from './components/Auth/Login/Login';
+import Register from './components/Auth/Register/Register';
 import requestService from './services/requests';
 import { updateUser } from './app/slices/user';
-import Logout from './components/Logout/Logout';
+import Logout from './components/Auth//Logout/Logout';
 
 const Header = React.lazy(() => import('./components/Header/Header'));
 const Footer = React.lazy(() => import('./components/Footer/Footer'));
-const Register = React.lazy(() => import('./components/Register/Register'));
-const Login = React.lazy(() => import('./components/Login/Login'));
 
 function App() {
     const toggled = useSelector(state => state.modal.isToggled);
