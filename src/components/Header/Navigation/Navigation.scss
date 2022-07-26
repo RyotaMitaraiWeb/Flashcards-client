@@ -5,6 +5,7 @@ nav {
         @media only screen and (max-width: 1060px) {
             display: none;
             position: fixed;
+            z-index: 3;
             left: 0;
             top: 0;
             width: 100%;
@@ -45,7 +46,7 @@ nav {
             }
     
             &:active {
-                opacity: 0.5;
+                opacity: 0.8;
             }
         }
     }
