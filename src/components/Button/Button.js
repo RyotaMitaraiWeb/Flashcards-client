@@ -7,6 +7,6 @@ export default function Button(props) {
     const color = preferences.color;
     const theme = preferences.theme + '-theme';
     return (
-        <button className={`${color} ${theme} button`}>{props.children}</button>
+        <button disabled={props.disabled} className={`${color} ${theme} button`}>{props.children}</button>
     );
 }
