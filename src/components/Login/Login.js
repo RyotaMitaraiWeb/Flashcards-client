@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import Container from '../Container/Container';
 import './Login.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import Icon from '../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import Button from '../Button/Button';
 import authService from '../../services/auth';
 import { updateUser } from '../../app/slices/user';
-import { useEffect } from 'react';
 const { login } = authService;
 
-export default function Login() {
+export default function Login(props) {
     const preferences = useSelector(state => state.preferences);
-    const user = useSelector(state => state.user);
-    const theme = preferences.theme + '-theme';
+    const theme = preferences.theme + '-theme'
     
     const [error, updateError] = useState(false);
     const [username, changeUsername] = useState('');
@@ -46,13 +44,9 @@ export default function Login() {
         changePassword(password);
     }
 
-    useEffect(() => {
-        console.log('loading');
-        if (user.id !== '') {
-            navigate('/', { replace: true });   
-        }
-
-    }, [navigate, user.id]);
+    if (props.id !== '') {
+        return <Navigate to="/" replace></Navigate>
+    }
 
     return (
         <Container>
@@ -69,7 +63,7 @@ export default function Login() {
                 <div className="group">
                     <p>Нямаш профил? <Link to="/register">Регистрирай се!</Link></p>
                 </div>
-                <Button><Icon icon="sign-in-alt"></Icon> Влез в профил</Button>
+                <Button disabled={false}><Icon icon="sign-in-alt"></Icon> Влез в профил</Button>
                 <p className={"error" + (!error ? " hidden" : "")}>Грешно потребителско име или парола!</p>
             </form>
         </Container>
