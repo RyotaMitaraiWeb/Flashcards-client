@@ -48,6 +48,14 @@ nav {
             &:active {
                 opacity: 0.8;
             }
+
+            @media only screen and (max-width: 380px) {
+                font-size: 1.5rem;        
+            }
+
+            @media only screen and (max-width: 305px) {
+                font-size: 1.2rem;        
+            }
         }
     }
 }

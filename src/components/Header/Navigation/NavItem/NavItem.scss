@@ -5,7 +5,15 @@ li.nav-link {
         font-size: 2rem;
         margin-bottom: 1.5em;
     }
-        
+    
+    @media only screen and (max-width: 380px) {
+        font-size: 1.5rem;        
+    }
+
+    @media only screen and (max-width: 305px) {
+        font-size: 1.2rem;        
+    }
+
     a {
         color: white;
         text-decoration: none;
