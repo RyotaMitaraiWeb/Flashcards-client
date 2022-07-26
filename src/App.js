@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
-import Login from './components/Login/Login';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useEffect } from 'react';
 import requestService from './services/requests';
@@ -9,6 +8,8 @@ import Logout from './components/Logout/Logout';
 
 const Header = React.lazy(() => import('./components/Header/Header'));
 const Footer = React.lazy(() => import('./components/Footer/Footer'));
+const Register = React.lazy(() => import('./components/Register/Register'));
+const Login = React.lazy(() => import('./components/Login/Login'));
 
 function App() {
     const toggled = useSelector(state => state.modal.isToggled);
@@ -16,8 +17,6 @@ function App() {
     const user = useSelector(state => state.user);
     const theme = preferences.theme + '-theme';
     const dispatch = useDispatch();
-    document.title = 'Начало';
-
     useEffect(() => {
         async function fetchData() {
             const { res, data } = await requestService.get('/isLogged');
@@ -37,7 +36,8 @@ function App() {
                     <Route path="/about" element={<h2>За нас</h2>}></Route>
                     <Route path="/rules" element={<h2>Правила</h2>}></Route>
                     <Route path="/faq" element={<h2>Често задавани въпроси</h2>}></Route>
-                    <Route path="/login" element={<Login />}></Route>
+                    <Route path="/login" element={<Login id={user.id} />}></Route>
+                    <Route path="/register" element={<Register id={user.id} />}></Route>
                     <Route path="/logout" element={<Logout />}></Route>
                 </Routes>
                 <Footer />
