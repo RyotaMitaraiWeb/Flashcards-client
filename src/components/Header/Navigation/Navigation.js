@@ -24,14 +24,14 @@ export default function Navigation() {
     return (
         <nav>
             <button onClick={toggleMenu} aria-label="Отвори навигационно меню"><Icon icon="bars" /></button>
-            <ul className={toggled ? "toggled" : null} onClick={hideMenu}>
+            <ul className={toggled ? "toggled" : null}>
                 <NavItem href="/"><Icon icon="home" /> Моите тестета</NavItem>
                 { 
                     user.id !== '' 
                     ? <NavLogged />
                     : <NavGuest />
                 }
-                <button className="close"><Icon icon="times" /> Затвори</button>
+                <button className="close" onClick={hideMenu}><Icon icon="times" /> Затвори</button>
             </ul>
         </nav>
     )

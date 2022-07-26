@@ -4,9 +4,11 @@ import './Login.scss';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import Icon from '../../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useCloseMenu } from '../../../hooks/useCloseMenu';
 import Button from '../../Button/Button';
 import authService from '../../../services/auth';
 import { updateUser } from '../../../app/slices/user';
+import { useEffect } from 'react';
 const { login } = authService;
 
 export default function Login(props) {
@@ -43,6 +45,8 @@ export default function Login(props) {
         const password = event.target.value;
         changePassword(password);
     }
+
+    useCloseMenu();
 
     if (props.id !== '') {
         return <Navigate to="/" replace></Navigate>

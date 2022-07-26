@@ -8,6 +8,7 @@ import Button from '../../Button/Button';
 import authService from '../../../services/auth';
 import { updateUser } from '../../../app/slices/user';
 import validationService from '../../../services/validation';
+import { useCloseMenu } from '../../../hooks/useCloseMenu';
 const { register } = authService;
 
 const initialErrors = {
@@ -47,6 +48,8 @@ export default function Register(props) {
     const [password, updatePassword] = useState('');
     const [email, updateEmail] = useState('');
 
+    useCloseMenu();
+    
     async function handleSubmit(event) {
         event.preventDefault();
         const { res, data } = await register({
