@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Container from '../Container/Container';
+import Container from '../../Container/Container';
 import './Login.scss';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
-import Icon from '../Icon/Icon';
+import Icon from '../../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
-import Button from '../Button/Button';
-import authService from '../../services/auth';
-import { updateUser } from '../../app/slices/user';
+import Button from '../../Button/Button';
+import authService from '../../../services/auth';
+import { updateUser } from '../../../app/slices/user';
 const { login } = authService;
 
 export default function Login(props) {
@@ -51,7 +51,7 @@ export default function Login(props) {
     return (
         <Container>
             <h1>Влез в профил</h1>
-            <form id="login" className={theme} onSubmit={handleSubmit}>
+            <form id="auth" className={theme} onSubmit={handleSubmit}>
                 <div className="group">
                     <label htmlFor="username">Потребителско име</label>
                     <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} placeholder="Потребителско име" />
