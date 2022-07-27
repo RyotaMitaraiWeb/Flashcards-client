@@ -1,3 +1,5 @@
+@import '../../index';
+
 #auth {
     display: flex;
     justify-content: center;
@@ -23,6 +25,13 @@
             padding: 15px 10px;
             width: 600px;
 
+            &.valid {
+                border: 2px solid $valid;
+            }
+
+            &.invalid {
+                border: 2px solid $invalid;
+            }
             @media only screen and (max-width: 700px) {
                 width: 400px;
             }
@@ -49,18 +58,6 @@
             //         border: 1px solid #C5BDBD;
             //     }
             // }
-        }
-
-        .error {
-            font-size: 0.8rem;
-            @media only screen and (max-width: 690px) {
-                font-size: 0.7rem;
-                overflow-wrap: anywhere;
-            }
-            
-            @media only screen and (max-width: 470px) {
-                font-size: 0.425rem;
-            }
         }
     }
 

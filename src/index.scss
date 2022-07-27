@@ -17,8 +17,13 @@
             background-color: $component-color-light
         }
 
-        .error {
+        p.error {
             color: #CC0000;
+        }
+
+        p.valid {
+            color: #0E7206;
+            font-weight: bold;
         }
     }
 
@@ -28,7 +33,7 @@
             background-color: $component-color-light;
         }
 
-        .error {
+        p.error {
             color: rgba(251, 104, 104, 0.87);
         }
     }

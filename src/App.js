@@ -8,6 +8,7 @@ import requestService from './services/requests';
 import { updateUser } from './app/slices/user';
 import Logout from './components/Auth//Logout/Logout';
 
+const Home = React.lazy(() => import('./components/Home/Home'));
 const Header = React.lazy(() => import('./components/Header/Header'));
 const Footer = React.lazy(() => import('./components/Footer/Footer'));
 
@@ -32,7 +33,7 @@ function App() {
             <main className={(toggled ? "locked " : "") + "app " + theme}>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<h2>Home</h2>}></Route>
+                    <Route path="/" element={<Home id={user.id} />}></Route>
                     <Route path="/about" element={<h2>За нас</h2>}></Route>
                     <Route path="/rules" element={<h2>Правила</h2>}></Route>
                     <Route path="/faq" element={<h2>Често задавани въпроси</h2>}></Route>

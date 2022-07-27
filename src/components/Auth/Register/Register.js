@@ -9,6 +9,8 @@ import authService from '../../../services/auth';
 import { updateUser } from '../../../app/slices/user';
 import validationService from '../../../services/validation';
 import { useCloseMenu } from '../../../hooks/useCloseMenu';
+import Error from '../../Feedback/Error';
+import Valid from '../../Feedback/Valid';
 const { register } = authService;
 
 const initialErrors = {
@@ -40,6 +42,10 @@ export default function Register(props) {
     const [validUsername, updateValidUsername] = useState(false);
     const [validPassword, updateValidPassword] = useState(false);
     const [validEmail, updateValidEmail] = useState(false);
+
+    const [invalidUsername, updateInvalidUsername] = useState(null);
+    const [invalidPassword, updateInvalidPassword] = useState(null);
+    const [invalidEmail, updateInvalidEmail] = useState(null);
     // const [usernameErrors, updateUsernameErrors] = useState([]);
     // const [emailErrors, updateEmailErrors] = useState(undefined);
     // const [passwordErrors, updatePasswordErrors] = useState(undefined);
@@ -49,7 +55,7 @@ export default function Register(props) {
     const [email, updateEmail] = useState('');
 
     useCloseMenu();
-    
+
     async function handleSubmit(event) {
         event.preventDefault();
         const { res, data } = await register({
@@ -80,6 +86,7 @@ export default function Register(props) {
 
         updateErrors({ type: 'USERNAME', usernameErrors: errors });
         updateValidUsername(valid);
+        updateInvalidUsername(!valid);
     }
 
     function handleEmailChange(event) {
@@ -97,7 +104,7 @@ export default function Register(props) {
         updateErrors({ type: 'EMAIL', emailErrors: error });
         const valid = error === '';
         updateValidEmail(valid);
-
+        updateInvalidEmail(!valid);
     }
 
     function handlePasswordChange(event) {
@@ -110,31 +117,38 @@ export default function Register(props) {
         updateErrors({ type: 'PASSWORD', passwordErrors: error });
         const valid = error === '';
         updateValidPassword(valid);
+        updateInvalidPassword(!valid);
     }
 
     const disabled = !(validUsername && validPassword && validEmail);
+    const usernameStatus = validUsername ? "valid" : (invalidUsername ? "invalid" : null);
+    const emailStatus = validEmail ? "valid" : (invalidEmail ? "invalid" : null);
+    const passwordStatus = validPassword ? "valid" : (invalidPassword ? "invalid" : null);
     if (props.id !== '') {
         return <Navigate to="/" replace />
     } else {
+        document.title = 'Регистрирай се';
         return (
             <Container>
                 <h1>Регистрирай се</h1>
                 <form id="auth" className={theme} onSubmit={handleSubmit}>
                     <div className="group">
                         <label htmlFor="username">Потребителско име</label>
-                        <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} onBlur={validateUsername} placeholder="Потребителско име" required />
-                        {/* {usernameErrors.map(error => <p className="error" key={error}>{error}</p>)} */}
-                        {validationErrors.usernameErrors.map(error => <p className="error" key={error}>{error}</p>)}
+                        <input type="text" id="username" name="username" className={usernameStatus} value={username} onChange={handleUsernameChange} onBlur={validateUsername} placeholder="Потребителско име" required />
+                        {validationErrors.usernameErrors.map(error => <Error key={error}>{error}</Error>)}
+                        {<Valid valid={validUsername}>Потребителското име е валидно!</Valid>}
                     </div>
                     <div className="group">
                         <label htmlFor="email">Имейл</label>
-                        <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} onBlur={validateEmail} placeholder="Имейл" />
-                        {validationErrors.emailErrors ? <p className="error">{validationErrors.emailErrors}</p> : null}
+                        <input type="email" id="email" name="email" className={emailStatus} value={email} onChange={handleEmailChange} onBlur={validateEmail} placeholder="Имейл" />
+                        {<Error valid={validEmail}>{validationErrors.emailErrors}</Error>}
+                        {<Valid valid={validEmail}>Имейлът е валиден!</Valid>}
                     </div>
                     <div className="group">
                         <label htmlFor="password">Парола</label>
-                        <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} onBlur={validatePassword} placeholder="Парола" />
-                        {validationErrors.passwordErrors ? <p className="error">{validationErrors.passwordErrors}</p> : null}
+                        <input type="password" id="password" name="password" className={passwordStatus} value={password} onChange={handlePasswordChange} onBlur={validatePassword} placeholder="Парола" />
+                        {<Error valid={validPassword}>{validationErrors.passwordErrors}</Error>}
+                        {<Valid valid={validPassword}>Паролата е валидна!</Valid>}
                     </div>
                     <div className="group">
                         <p>Имаш профил? <Link to="/login">Влез сега!</Link></p>
