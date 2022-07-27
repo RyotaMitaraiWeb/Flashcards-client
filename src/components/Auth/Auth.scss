@@ -91,6 +91,11 @@
 
     p {
         font-style: italic;
+        padding: 5px;
+        &.big {
+            font-size: 1rem;
+        }
+
         a {
             color: #214F4F;
             text-decoration: underline;

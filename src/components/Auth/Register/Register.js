@@ -77,9 +77,13 @@ export default function Register(props) {
 
     async function validateUsername() {
         const errors = validationService.validateUsername(username);
-        const existingUsername = await validationService.checkIfUserExists('username', username);
-        if (existingUsername !== '') {
-            errors.push(existingUsername);
+        let existingUsername;
+
+        if (errors.length === 0) {
+            existingUsername = await validationService.checkIfUserExists('username', username);
+            if (existingUsername !== '') {
+                errors.push(existingUsername);
+            }
         }
 
         const valid = errors.length === 0;

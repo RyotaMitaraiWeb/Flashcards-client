@@ -4,7 +4,7 @@ const { post } = requestService;
 function validateUsername(username) {
     const errors = [];
     if (username.length === 0) {
-        errors.push('Потребителското име е задължително');
+        errors.push('Потребителското име е задължително!');
     } else {
         const startPattern = /^[a-z]/i;
         const validSymbolsPattern = /[^0-9a-z]+/i;
@@ -28,9 +28,9 @@ function validateUsername(username) {
 function validatePassword(password) {
     const errors = [];
     if (password.length === 0) {
-        return 'Паролата е задължителна';
+        return 'Паролата е задължителна!';
     } else if (password.length < 6) {
-        return 'Паролата трябва да е поне 6 символа';
+        return 'Паролата трябва да е поне 6 символа!';
     }
     
     return '';
@@ -39,9 +39,9 @@ function validatePassword(password) {
 function validateEmail(event) {
     const email = event.target.value.trim();
     if (email.length === 0) {
-        return 'Имейлът е задължителен';
+        return 'Имейлът е задължителен!';
     } else if (!event.target.checkValidity()) {
-        return 'Имейлът трябва да е във формат имейл@домейн';
+        return 'Имейлът трябва да е във формат имейл@домейн!';
     }
 
     return '';

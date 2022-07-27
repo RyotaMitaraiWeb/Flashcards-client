@@ -68,7 +68,7 @@ export default function Login(props) {
                     <p>Нямаш профил? <Link to="/register">Регистрирай се!</Link></p>
                 </div>
                 <Button disabled={false}><Icon icon="sign-in-alt"></Icon> Влез в профил</Button>
-                <p className={"error" + (!error ? " hidden" : "")}>Грешно потребителско име или парола!</p>
+                <p className={"big error" + (!error ? " hidden" : "")}>Грешно потребителско име или парола!</p>
             </form>
         </Container>
     )
