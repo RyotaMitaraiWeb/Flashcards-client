@@ -1,0 +1,7 @@
+p.error, p.valid {
+    font-size: 0.6rem;
+    
+    @media only screen and (max-width: 470px) {
+        font-size: 0.425rem;
+    }
+}
