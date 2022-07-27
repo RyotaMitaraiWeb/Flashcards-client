@@ -24,6 +24,11 @@
             border-radius: 14px;
             padding: 15px 10px;
             width: 600px;
+            border: 2px solid #C5BDBD;
+
+            &:focus {
+                border: 2px solid black;
+            }
 
             &.valid {
                 border: 2px solid $valid;
@@ -32,6 +37,7 @@
             &.invalid {
                 border: 2px solid $invalid;
             }
+
             @media only screen and (max-width: 700px) {
                 width: 400px;
             }
