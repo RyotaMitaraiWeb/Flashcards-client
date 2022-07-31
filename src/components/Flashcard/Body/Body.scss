@@ -1,0 +1,68 @@
+@import "../../../variables.scss";
+
+.flashcard-body {
+    display: block;
+    margin: 0 auto 1em;
+    border: 1px solid black;
+    border-top: none;
+    text-align: left;
+    &.preview {
+        width: 95%;
+        min-height: 184px;
+
+        @media only screen and (max-width: 1090px) {
+            max-width: 500px;
+        }
+
+        h3 {
+            margin-top: 0;
+            padding: 10px 5px;
+            border-bottom: 1px solid gray;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+
+            @media only screen and (max-width: 390px) {
+                flex-direction: column;
+                gap: 20px;
+                padding: 5px 0;
+            }
+
+            .author {
+                margin-bottom: 5px;
+            }
+
+            .date {
+                font-style: italic;
+            }
+
+            .actions {
+                display: flex;
+                flex-direction: column;
+                
+                .button {
+                    border-radius: 50px;
+                    padding: 5px;
+                    margin-bottom: 5px;
+
+                    @media only screen and (max-width: 410px) {
+                        font-size: 0.8rem;
+                    }
+                }
+
+                .remove {
+                    background-color: $remove-light;
+                }
+            }
+        }
+    }
+
+    &.card {
+        width: 500px;
+        min-height: 400px;
+    }
+}
