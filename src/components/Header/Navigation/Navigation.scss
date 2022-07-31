@@ -2,7 +2,7 @@ nav {
     ul {
         display: block;
         padding: 0 15px;
-        @media only screen and (max-width: 1060px) {
+        @media only screen and (max-width: 1090px) {
             display: none;
             position: fixed;
             z-index: 3;
@@ -31,7 +31,7 @@ nav {
         background: white;
         border: none;
         cursor: pointer;
-        @media only screen and (max-width: 1060px) {
+        @media only screen and (max-width: 1090px) {
             display: block;
         }
 
@@ -49,11 +49,11 @@ nav {
                 opacity: 0.8;
             }
 
-            @media only screen and (max-width: 380px) {
+            @media only screen and (max-width: 410px) {
                 font-size: 1.5rem;        
             }
 
-            @media only screen and (max-width: 305px) {
+            @media only screen and (max-width: 340px) {
                 font-size: 1.2rem;        
             }
         }

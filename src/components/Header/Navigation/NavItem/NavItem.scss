@@ -1,16 +1,16 @@
 li.nav-link {
     display: inline-block;
-    @media only screen and (max-width: 1060px) {
+    @media only screen and (max-width: 1090px) {
         display: block;
         font-size: 2rem;
         margin-bottom: 1.5em;
     }
     
-    @media only screen and (max-width: 380px) {
+    @media only screen and (max-width: 410px) {
         font-size: 1.5rem;        
     }
 
-    @media only screen and (max-width: 305px) {
+    @media only screen and (max-width: 340px) {
         font-size: 1.2rem;        
     }
 
