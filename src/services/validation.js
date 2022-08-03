@@ -26,7 +26,6 @@ function validateUsername(username) {
 }
 
 function validatePassword(password) {
-    const errors = [];
     if (password.length === 0) {
         return 'Паролата е задължителна!';
     } else if (password.length < 6) {
@@ -52,8 +51,17 @@ async function checkIfUserExists(attribute, value) {
     body[attribute] = value;
 
     const { data } = await post('/exists', body);
-    console.log(data);
     return data.error;
+}
+
+function validateTitle(title) {
+    title = title.trim();
+    return title.length >= 10 && title.length <= 100;
+}
+
+function validateDescription(description) {
+    description = description.trim();
+    return description.length >= 1 && description.length <= 500;
 }
 
 const validationService = {
@@ -61,5 +69,8 @@ const validationService = {
     validatePassword,
     validateEmail,
     checkIfUserExists,
+    validateTitle,
+    validateDescription,
 };
+
 export default validationService;
