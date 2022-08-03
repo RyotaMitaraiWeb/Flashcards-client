@@ -10,7 +10,6 @@ export default function Logout() {
     useEffect(() => {
         async function clearSession() {
             const res = await authService.logout();
-            console.log(res.status + ' test');
             dispatch(logout());
             if (res.status === 204) {
                 navigate('/', { replace: true });

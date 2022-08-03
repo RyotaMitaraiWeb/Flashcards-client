@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Container from '../../Container/Container';
 import '../Auth.scss';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useCloseMenu } from '../../../hooks/useCloseMenu';
@@ -10,7 +10,7 @@ import authService from '../../../services/auth';
 import { updateUser } from '../../../app/slices/user';
 const { login } = authService;
 
-export default function Login(props) {
+export default function Login() {
     const preferences = useSelector(state => state.preferences);
     const theme = preferences.theme + '-theme'
     
@@ -26,8 +26,6 @@ export default function Login(props) {
         const body = { username, password };
         const { res, data } = await login(body);
         if (res.status === 200) {
-            console.log(res);
-            console.log(data);
             dispatch(updateUser(data));
             navigate('/', { replace: true });
         } else {
@@ -47,14 +45,10 @@ export default function Login(props) {
 
     useCloseMenu();
 
-    if (props.id !== '') {
-        return <Navigate to="/" replace></Navigate>
-    }
-
     return (
         <Container>
             <h1>Влез в профил</h1>
-            <form id="auth" className={theme} onSubmit={handleSubmit}>
+            <form id="auth" className={`form ${theme}`} onSubmit={handleSubmit}>
                 <div className="group">
                     <label htmlFor="username">Потребителско име</label>
                     <input type="text" id="username" name="username" value={username} onChange={handleUsernameChange} placeholder="Потребителско име" />

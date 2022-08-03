@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from 'react';
 import Container from '../../Container/Container';
 import '../Auth.scss';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import Button from '../../Button/Button';
@@ -32,7 +32,7 @@ const reducer = (state, action) => {
     }
 }
 
-export default function Register(props) {
+export default function Register() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const preferences = useSelector(state => state.preferences);
@@ -128,38 +128,35 @@ export default function Register(props) {
     const usernameStatus = validUsername ? "valid" : (invalidUsername ? "invalid" : null);
     const emailStatus = validEmail ? "valid" : (invalidEmail ? "invalid" : null);
     const passwordStatus = validPassword ? "valid" : (invalidPassword ? "invalid" : null);
-    if (props.id !== '') {
-        return <Navigate to="/" replace />
-    } else {
-        document.title = 'Регистрирай се';
-        return (
-            <Container>
-                <h1>Регистрирай се</h1>
-                <form id="auth" className={theme} onSubmit={handleSubmit}>
-                    <div className="group">
-                        <label htmlFor="username">Потребителско име</label>
-                        <input type="text" id="username" name="username" className={usernameStatus} value={username} onChange={handleUsernameChange} onBlur={validateUsername} placeholder="Потребителско име" required />
-                        {validationErrors.usernameErrors.map(error => <Error key={error}>{error}</Error>)}
-                        {<Valid valid={validUsername}>Потребителското име е валидно!</Valid>}
-                    </div>
-                    <div className="group">
-                        <label htmlFor="email">Имейл</label>
-                        <input type="email" id="email" name="email" className={emailStatus} value={email} onChange={handleEmailChange} onBlur={validateEmail} placeholder="Имейл" />
-                        {<Error valid={validEmail}>{validationErrors.emailErrors}</Error>}
-                        {<Valid valid={validEmail}>Имейлът е валиден!</Valid>}
-                    </div>
-                    <div className="group">
-                        <label htmlFor="password">Парола</label>
-                        <input type="password" id="password" name="password" className={passwordStatus} value={password} onChange={handlePasswordChange} onBlur={validatePassword} placeholder="Парола" />
-                        {<Error valid={validPassword}>{validationErrors.passwordErrors}</Error>}
-                        {<Valid valid={validPassword}>Паролата е валидна!</Valid>}
-                    </div>
-                    <div className="group">
-                        <p>Имаш профил? <Link to="/login">Влез сега!</Link></p>
-                    </div>
-                    <Button disabled={disabled}><Icon icon="sign-in-alt"></Icon> Регистрация</Button>
-                </form>
-            </Container>
-        )
-    }
+
+    document.title = 'Регистрирай се';
+    return (
+        <Container>
+            <h1>Регистрирай се</h1>
+            <form id="auth" className={`form ${theme}`} onSubmit={handleSubmit}>
+                <div className="group">
+                    <label htmlFor="username">Потребителско име</label>
+                    <input type="text" id="username" name="username" className={usernameStatus} value={username} onChange={handleUsernameChange} onBlur={validateUsername} placeholder="Потребителско име" required />
+                    {validationErrors.usernameErrors.map(error => <Error key={error}>{error}</Error>)}
+                    {<Valid valid={validUsername}>Потребителското име е валидно!</Valid>}
+                </div>
+                <div className="group">
+                    <label htmlFor="email">Имейл</label>
+                    <input type="email" id="email" name="email" className={emailStatus} value={email} onChange={handleEmailChange} onBlur={validateEmail} placeholder="Имейл" />
+                    {<Error valid={validEmail}>{validationErrors.emailErrors}</Error>}
+                    {<Valid valid={validEmail}>Имейлът е валиден!</Valid>}
+                </div>
+                <div className="group">
+                    <label htmlFor="password">Парола</label>
+                    <input type="password" id="password" name="password" className={passwordStatus} value={password} onChange={handlePasswordChange} onBlur={validatePassword} placeholder="Парола" />
+                    {<Error valid={validPassword}>{validationErrors.passwordErrors}</Error>}
+                    {<Valid valid={validPassword}>Паролата е валидна!</Valid>}
+                </div>
+                <div className="group">
+                    <p>Имаш профил? <Link to="/login">Влез сега!</Link></p>
+                </div>
+                <Button disabled={disabled}><Icon icon="sign-in-alt"></Icon> Регистрация</Button>
+            </form>
+        </Container>
+    )
 }
