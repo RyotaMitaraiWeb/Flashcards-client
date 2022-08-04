@@ -1,11 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Flashcard from "../../../Flashcard/Flashcard";
 import './FlashcardForm.scss';
 
 export default function Form(props) {
     const side = props.side === 'front' ? 'Предна част' : 'Задна част';
     const form = useRef(null);
-    const [length, setLength] = useState(0);
 
     function handleFocus(event) {
         event.stopPropagation();
