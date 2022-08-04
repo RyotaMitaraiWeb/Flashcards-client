@@ -8,6 +8,7 @@ import { restartBasicInfo } from "../../app/slices/newFlashcard";
 export default function Create() {
     const [next, updateNext] = useState(false);
     const dispatch = useDispatch();
+    document.title = 'Създай ново тесте';
 
     function transitionToFlashcardForm(event) {
         event.preventDefault();
