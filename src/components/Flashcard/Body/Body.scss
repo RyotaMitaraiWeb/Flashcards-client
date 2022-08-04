@@ -6,6 +6,7 @@
     border: 1px solid black;
     border-top: none;
     text-align: left;
+    background: $component-color-light;
     &.preview {
         width: 95%;
         min-height: 184px;
@@ -63,6 +64,27 @@
 
     &.card {
         width: 500px;
-        min-height: 400px;
+        height: 400px;
+
+        @media only screen and (max-width: 1220px) {
+            width: 400px;
+            height: 300px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            width: 350px;
+        }
+
+        @media only screen and (max-width: 525px) {
+            width: 325px;
+        }
+
+        @media only screen and (max-width: 450px) {
+            width: 300px;
+        }
+
+        @media only screen and (max-width: 350px) {
+            width: 250px;
+        }
     }
 }

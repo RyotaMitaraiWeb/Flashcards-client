@@ -2,7 +2,7 @@ import './Body.scss';
 
 export default function FlashcardBody(props) {
     return (
-        <div className={`flashcard-body ${props.context}`}>
+        <div className={`flashcard-body ${props.context}`} onClick={props.focus}>
             {props.children}
         </div>
     )

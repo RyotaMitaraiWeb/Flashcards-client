@@ -14,8 +14,8 @@ export default function BasicInfoForm(props) {
     useCloseMenu();
     const dispatch = useDispatch();
 
-    const [title, updateTitle] = useState('');
-    const [description, updateDescription] = useState('');
+    const [title, updateTitle] = useState(props.title || '');
+    const [description, updateDescription] = useState(props.description || '');
 
     const titleLength = title.trim().length;
     const descriptionLength = description.trim().length;

@@ -22,7 +22,7 @@ export default function Create() {
     }, [dispatch]);
 
     if (next) {
-        return <FlashcardForms />
+        return <FlashcardForms endpoint="create" />
     }
 
     return (

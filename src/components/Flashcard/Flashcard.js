@@ -4,8 +4,8 @@ import FlashcardBody from './Body/Body';
 export default function Flashcard(props) {
     return (
         <>
-            <FlashcardHead colorTheme={props.colorTheme} context={props.context} />
-            <FlashcardBody context={props.context}>
+            <FlashcardHead colorTheme={props.colorTheme} context={props.context} focus={props.focus} />
+            <FlashcardBody context={props.context} focus={props.focus}>
                 {props.children}
             </FlashcardBody>
         </>

@@ -1,0 +1,100 @@
+@import "../../../../variables.scss";
+
+.count {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#flashcard-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    h2 {
+        text-align: center;
+    }
+
+    .previous, .next {
+        background: none;
+        border: none;
+        font-size: 4rem;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:active {
+            text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px #eeeeee, 2px 1px 1px #cccccc, 1px 2px 1px #eeeeee,
+                3px 2px 1px #cccccc, 2px 3px 1px #eeeeee, 4px 3px 1px #cccccc, 3px 4px 1px #eeeeee, 5px 4px 1px #cccccc,
+                4px 5px 1px #eeeeee, 6px 5px 1px #cccccc, 5px 6px 1px #eeeeee, 7px 6px 1px #cccccc,
+                -10px 8px 17px rgba(157, 115, 141, 0.54);
+        }
+
+        @media only screen and (max-width: 700px) {
+            font-size: 3rem;
+        }
+
+        @media only screen and (max-width: 450px) {
+            font-size: 2rem;
+        }
+
+        @media only screen and (max-width: 350px) {
+            font-size: 1.3rem;
+        }
+    }
+
+    .invisible {
+        visibility: hidden;
+    }
+
+    .forms {
+        display: flex;
+        gap: 50px;
+        @media only screen and (max-width: 1050px) {
+            flex-direction: column;
+        }
+        .error {
+            font-size: 0.8rem;
+            margin-bottom: 2em;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2em;
+    @media only screen and (max-width: 700px) {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button {
+        border-radius: 3px;
+        padding: 10px;
+        font-size: 1.2rem;
+
+        @media only screen and (max-width: 700px) {
+            margin: 0 auto;
+            width: 500px;
+            text-align: center;
+            gap: 10px;
+        }
+
+        @media only screen and (max-width: 550px) {
+            max-width: 250px;
+        }
+
+        &.delete {
+            background: $remove-light;
+        }
+        &.add {
+            background: $valid;
+        }
+    }
+}

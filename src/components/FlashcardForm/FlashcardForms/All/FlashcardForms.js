@@ -5,12 +5,15 @@ import { useSelector } from "react-redux/es/exports";
 import requestService from '../../../../services/requests';
 import { useNavigate } from "react-router-dom";
 import Error from '../../../Feedback/Error';
+import './FlashcardForms.scss';
 
 const { post } = requestService;
 
 export default function FlashcardForms(props) {
     const navigate = useNavigate();
     const flashcardsInfo = useSelector(state => state.flashcards);
+
+
     const [data, updateData] = useState(props.cards || [{
         front: {
             content: '',
@@ -24,8 +27,8 @@ export default function FlashcardForms(props) {
     const front = data[counter].front.content;
     const back = data[counter].back.content;
 
-    const frontError = front.length <= 0 || front.length > 75;
-    const backError = back.length <= 0 || back.length > 75;
+    const frontError = front.trim().length <= 0 || front.trim().length > 75;
+    const backError = back.trim().length <= 0 || back.trim().length > 75;
 
     function increment() {
         updateCounter(state => state + 1);
@@ -65,7 +68,7 @@ export default function FlashcardForms(props) {
     function handleChange(event) {
         event.preventDefault();
         const copy = [...data];
-        const content = event.target.value.trim();
+        const content = event.target.value;
         const side = event.target.className;
         copy[counter][side].content = content;
         updateData(copy);
@@ -88,7 +91,7 @@ export default function FlashcardForms(props) {
                 description: flashcardsInfo.description,
                 flashcards: data,
             });
-        
+
             if (result.res.status === 201 || result.res.status === 202) {
                 const id = result.data;
                 navigate(`/flashcards/${id}`, { replace: true });
@@ -101,24 +104,33 @@ export default function FlashcardForms(props) {
             <p className="count">{counter + 1} / {data.length}</p>
             <div id="flashcard-form">
                 <div className="group">
-                    <button className={"previous" + (counter === 0 ? " hidden" : "")} onClick={decrement}><Icon icon="arrow-left" /></button>
+                    <button className={"previous" + (counter === 0 ? " invisible" : "")} onClick={decrement}><Icon icon="arrow-left" /></button>
                 </div>
                 <div className="forms">
                     <>
-                        <Form side="front" content={data[counter].front.content} handleChange={handleChange}></Form>
-                        <Error valid={!frontError}>Съдържанието трябва да е между 1 и 75 символа!</Error>
-                        <Form side="back" content={data[counter].back.content} handleChange={handleChange}></Form>
-                        <Error valid={!backError}>Съдържанието трябва да е между 1 и 75 символа!</Error>
+                        <div>
+                            <Form side="front" content={data[counter].front.content} handleChange={handleChange}></Form>
+                            <div className={frontError === false ? "invisible" : ""}>
+                                <Error valid={false}>Съдържанието трябва да е между 1 и 75 символа!</Error>
+                            </div>
+                        </div>
+                        <div>
+                            <Form side="back" content={data[counter].back.content} handleChange={handleChange}></Form>
+                            <div className={backError === false ? "invisible" : ""}>
+                                <Error valid={false}>Съдържанието трябва да е между 1 и 75 символа!</Error>
+                            </div>
+                        </div>
                     </>
                 </div>
                 <div className="group">
-                    <button className={"next" + (counter >= data.length - 1 ? " hidden" : "")} onClick={increment}><Icon icon="arrow-right" /></button>
+                    <button className={"next" + (counter >= data.length - 1 ? " invisible" : "")} onClick={increment}><Icon icon="arrow-right" /></button>
                 </div>
             </div>
+            <p className="count">{counter + 1} / {data.length}</p>
             <div className="actions">
-                <button className={"add" + (data.length === 75 ? " hidden" : "")} onClick={addCard}>Добави нова карта</button>
-                <button className={"delete" + (data.length === 1 ? " hidden" : "")} onClick={deleteCard}>Изтрий тази карта</button>
-                <button className="save" onClick={saveDeck}>Създай тесте</button>
+                <button className={"button add" + (data.length === 75 ? " hidden" : "")} onClick={addCard}><Icon icon="plus-circle" /> Добави нова карта</button>
+                <button className={"button delete" + (data.length === 1 ? " hidden" : "")} onClick={deleteCard}><Icon icon="trash" /> Изтрий тази карта</button>
+                <button className="button purple save" onClick={saveDeck}><Icon icon="check" /> Създай тесте</button>
             </div>
         </>
     );
