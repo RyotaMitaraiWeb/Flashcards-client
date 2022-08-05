@@ -8,8 +8,13 @@ export default function Delete() {
     const navigate = useNavigate();
     useEffect(() => {
         async function fetchData() {
-            await del(`/flashcard/${id}/delete`);
-            navigate('/', { replace: true });
+            const { res } = await del(`/flashcard/${id}/delete`);
+            console.log(res);
+            if (res.status === 202) {
+                navigate('/', { replace: true });
+            } else {
+                navigate('/404', { replace: true });
+            }
         }
 
         fetchData();
