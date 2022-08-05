@@ -11,13 +11,13 @@ export default function Home(props) {
     useCloseMenu();
 
     const [decks, updateDecks] = useState([]);
-    const previews = decks.map(deck => <DeckPreview key={deck.id} deck={deck} />);
+    const previews = decks.map(deck => <DeckPreview key={deck._id} deck={deck} />);
 
     document.title = 'Начало';
 
     useEffect(() => {
         async function fetchData() {
-            const { res, data } = await get('/saved');
+            const { res, data } = await get('/flashcard/saved');
             if (res.ok) {
                 updateDecks(data);
             }
