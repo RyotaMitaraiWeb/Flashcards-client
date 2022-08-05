@@ -13,7 +13,6 @@ async function register(body) {
 
 async function logout() {
     const { res } = await get('/logout');
-    console.log(res);
     return res;
 }
 
