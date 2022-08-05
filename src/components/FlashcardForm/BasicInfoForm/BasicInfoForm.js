@@ -14,8 +14,8 @@ export default function BasicInfoForm(props) {
     useCloseMenu();
     const dispatch = useDispatch();
 
-    const [title, updateTitle] = useState(props.title || '');
-    const [description, updateDescription] = useState(props.description || '');
+    const [title, updateTitle] = useState(props?.deck?.deck?.title || '');
+    const [description, updateDescription] = useState(props?.deck?.deck?.description || '');
 
     const titleLength = title.trim().length;
     const descriptionLength = description.trim().length;
@@ -57,7 +57,7 @@ export default function BasicInfoForm(props) {
     }
     return (
         <>
-            <h1>Създай ново тесте</h1>
+            <h1>{props.endpoint === 'create' ? 'Създай ново' : `Редактирай`} тесте</h1>
             <form id="basic-info-form" className="form" onSubmit={handleSubmit}>
                 <div className="group">
                     <label htmlFor="title">Заглавие ({titleLength}/100)</label>
