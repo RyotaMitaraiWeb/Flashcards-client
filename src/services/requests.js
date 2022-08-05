@@ -20,8 +20,10 @@ async function request(method, endpoint, body) {
 
     let data;
 
-    if (res.status !== 204) {
+    try {
         data = await res.json();
+    } catch (err) {
+        data = [];
     }
 
     return { res, data };
