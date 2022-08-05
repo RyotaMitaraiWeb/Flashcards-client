@@ -64,14 +64,15 @@
     }
 }
 
-.actions {
+.actions-form {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 2em;
+    gap: 10px;
+    
     @media only screen and (max-width: 700px) {
         flex-direction: column;
-        gap: 10px;
     }
 
     .button {

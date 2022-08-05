@@ -126,7 +126,7 @@ export default function FlashcardForms(props) {
                 </div>
             </div>
             <p className="count">{counter + 1} / {data.length}</p>
-            <div className="actions">
+            <div className="actions-form">
                 <button className={"button add" + (data.length === 75 ? " hidden" : "")} onClick={addCard}><Icon icon="plus-circle" /> Добави нова карта</button>
                 <button className={"button delete" + (data.length === 1 ? " hidden" : "")} onClick={deleteCard}><Icon icon="trash" /> Изтрий тази карта</button>
                 <button className="button purple save" onClick={saveDeck}><Icon icon="check" /> Запази тесте</button>
