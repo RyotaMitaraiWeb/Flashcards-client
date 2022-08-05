@@ -10,6 +10,8 @@ import Logout from './components/Auth//Logout/Logout';
 import Create from './components/Create/Create';
 import LoggedInGuard from './RouteGuards/LoggedInGuard';
 import GuestGuard from './RouteGuards/GuestGuard';
+import Edit from './components/Edit/Edit';
+import Delete from './components/Delete/Delete';
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Header = React.lazy(() => import('./components/Header/Header'));
@@ -63,6 +65,16 @@ function App() {
                         </LoggedInGuard>
                     }>
                     </Route>
+                    <Route path="/flashcard/:id/edit" element={
+                        <LoggedInGuard>
+                            <Edit />
+                        </LoggedInGuard>
+                    }></Route>
+                    <Route path="/flashcard/:id/delete" element={
+                        <LoggedInGuard>
+                            <Delete />
+                        </LoggedInGuard>
+                    }></Route>
                 </Routes>
                 <Footer />
 
