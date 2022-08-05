@@ -27,7 +27,7 @@ export default function Create() {
 
     return (
         <Container>
-            <BasicInfoForm func={transitionToFlashcardForm} />
+            <BasicInfoForm func={transitionToFlashcardForm} endpoint="create" />
         </Container>
     )
 }
