@@ -1,0 +1,196 @@
+@import "../../../variables.scss";
+
+.deck-info {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px;
+
+    @media only screen and (max-width: 910px) {
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        width: 95%;
+        padding: 30px;
+    }
+
+    .info,
+    .actions-session {
+        background: white;
+        border-radius: 5px;
+        padding: 10px;
+        height: 350px;
+    }
+
+    .info {
+        width: 55%;
+        @media only screen and (max-width: 910px) {
+            width: 100%;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 1.1em;
+            font-size: 1.3em;
+        }
+
+        .author {
+            border-bottom: 1px solid gray;
+            padding-bottom: 10px;
+        }
+
+        .author {
+            font-style: italic;
+        }
+    }
+
+    .actions-session {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+
+        @media only screen and (max-width: 910px) {
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .button {
+            border-radius: 20px;
+            text-decoration: none;
+            padding: 10px;
+            width: 80%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+            @media only screen and (max-width: 910px) {
+                width: 300px;
+                text-align: center;
+            }
+
+            @media only screen and (max-width: 400px) {
+                width: 200px;
+                text-align: center;
+            }
+
+            &.delete {
+                background-color: $remove-light;
+            }
+
+            
+        }
+
+        div.group {
+            margin-top: -10px;
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+
+            input {
+                visibility: hidden;
+                position: relative;
+            }
+
+            label {
+                position: relative;
+                cursor: pointer;
+            }
+
+            .checkmark {
+                // position: absolute;
+                display: inline-block;
+                height: 20px;
+                width: 20px;
+                border: 1px solid black;
+                color: white;
+                cursor: pointer;
+                text-align: center;
+
+                &.checked {
+                    background: $valid;
+                }
+            }
+        }
+    }
+}
+
+#list {
+    margin-bottom: 1em;
+    width: 95%;
+
+    .toggle {
+        color: white;
+        font-weight: bold;
+        display: block;
+        width: 95%;
+        margin: 0 auto;
+        padding: 30px;
+        cursor: pointer;
+        .left {
+            text-align: left;
+        }
+    
+        .right {
+            float: right;
+            @media only screen and (max-width: 425px) {
+                float: none;
+            }
+        }
+    
+        &:active {
+            opacity: 0.9;
+        }
+    }
+
+    .cards:not(.hidden) {
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 30px;
+        hr {
+            width: 70%;
+            @media only screen and (max-width: 900px) {
+                width: 90%;
+                border-width: 3px;
+            }
+        }
+
+        & > div:last-child hr {
+            display: none;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+
+            .side {
+                background: white;
+                padding: 30px;
+                width: 400px;
+                height: 400px;
+
+                @media only screen and (max-width: 500px) {
+                    width: 200px;
+                    height: 200px;
+                    font-size: 0.8rem;
+                }
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

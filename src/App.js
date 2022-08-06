@@ -12,6 +12,7 @@ import LoggedInGuard from './RouteGuards/LoggedInGuard';
 import GuestGuard from './RouteGuards/GuestGuard';
 import Edit from './components/Edit/Edit';
 import Delete from './components/Delete/Delete';
+import DeckInfo from './components/Deck/DeckInfo/DeckInfo';
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Header = React.lazy(() => import('./components/Header/Header'));
@@ -65,6 +66,7 @@ function App() {
                         </LoggedInGuard>
                     }>
                     </Route>
+                    <Route path="/flashcard/:id" element={<DeckInfo />}></Route>
                     <Route path="/flashcard/:id/edit" element={
                         <LoggedInGuard>
                             <Edit />
