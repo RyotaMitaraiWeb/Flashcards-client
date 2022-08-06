@@ -1,6 +1,15 @@
 .deck-preview {
     margin-bottom: 3em;
 
+    h3 {
+        a {
+            color: black;
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+
     a {
         text-decoration: none;
         display: flex;

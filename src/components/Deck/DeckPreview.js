@@ -12,7 +12,7 @@ export default function DeckPreview(props) {
     return (
         <div className="deck-preview">
             <Flashcard context="preview" colorTheme="purple">
-                <h3>{props.deck.title}</h3>
+                <h3><Link to={`/flashcard/${props.deck._id}`}>{props.deck.title}</Link></h3>
                 <div className="info">
                     <div className="creation-info">
                         <div className="author">От <b>{props.deck.authorUsername}</b></div>
