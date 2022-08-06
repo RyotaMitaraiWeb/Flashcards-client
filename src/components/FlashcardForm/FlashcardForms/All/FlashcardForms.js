@@ -93,7 +93,7 @@ export default function FlashcardForms(props) {
 
             if (result.res.status === 201 || result.res.status === 202) {
                 const id = result.data;
-                navigate(`/flashcards/${id}`, { replace: true });
+                navigate(`/flashcard/${id}`, { replace: true });
             }
         }
     }
