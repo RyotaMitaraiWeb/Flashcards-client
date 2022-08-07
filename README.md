@@ -1,46 +1,83 @@
-# Getting Started with Create React App and Redux
+# Flashcard-Client
+This is a React application that simulates flashcards—cards used for memorizing a lot of content in a short amount of time
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Installation
 
-## Available Scripts
+To run the React application, download the project and run:
 
-In the project directory, you can run:
+```bash
+npm install
+npm start
+```
 
-### `npm start`
+In addition, you need to download and run the server associated with this project. Check out [its repository](https://github.com/RyotaMitaraiWeb/Flashbacks-server) to learn more about running it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Application structure (folders)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ``app``
+The app folder contains the Redux logic. This project uses Redux toolkit, thus it separates each feature in its own slice.
 
-### `npm test`
+#### ``mobileMenu``
+This slice maintains the global state of the mobile navigation menu; more specifically, it toggles it on and off and also locks the body of the page so that the user cannot scroll while the menu is open
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### Methods
+###### toggleModal(payload)
+`toggleModal` accepts a ``payload`` boolean argument and toggles the menu's visibility
 
-### `npm run build`
+###### hideModal()
+`hideModal` sets the `isToggled` state to `false`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### ``newFlashcard``
+This slice maintains the state of a submission's title and description. The state resets upon the form's unmounting
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##### Methods
+###### updateBasicInfo(payload)
+Accepts a ``payload`` with ``title`` and ``description`` and sets the current state with those values
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###### restartBasicInfo()
+Restarts the state of the slice. Always called when the form unmounts.
 
-### `npm run eject`
+#### ``user``
+This slice maintains info about the user
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##### Methods
+###### updateUser(payload)
+Accepts a ``payload`` with ``username`` and ``id`` and sets the current state with those values
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+###### updateToDefaultPreference()
+Restarts the state of the slice to `purple`, `light`, and `vertical`, respectively.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### ``newFlashcard``
+This slice maintains the state of a submission's title and description. The state resets upon the form's unmounting
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##### Methods
+###### updateBasicInfo(payload)
+Accepts a ``payload`` with ``title`` and ``description`` and sets the current state with those values
 
-## Learn More
+###### logout()
+Restarts the state of the slice. Called when the user logouts.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### hooks
+This folder contains custom hooks that can be used in the components.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### ``useCloseMenu``
+Closes the mobile menu when called
+
+#### ``useShuffler(arr, run)``
+Shuffles an array, in this case, an array of flashcards. The hook uses the Fisher-Yates algorithm for shuffling an array, meaning that each particular permutation has the same chance of occuring as the other ones. The hook accepts two arguments: the array and a boolean value that indicates whether to shuffle the array.
+
+#### ``useDateFormatter(date)``
+Formats the ``createdAt`` and ``updatedAt`` properties of a deck. It takes the first ten characters and reverses the format.
+
+### Services
+Services are functions that are not necessarily hooks; that is, they are often run in callback functions.
+
+#### ``requests.js``
+``method(relativeEndpoint, body?)``
+provides ``get``, ``post``, ``put``, and ``delete`` functions to make the respective HTTP requests. All of them return an object with the response and (if applicable) the data that the server returned. If ``body`` is provided, it will be stringified and sent to the server, which may then read its content
+
+#### ``auth.js``
+provides a ``login``, ``register``, and ``logout`` functions, which make the respective requests. Login and register accept one argument, a body, while logout does not accept any argument.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
