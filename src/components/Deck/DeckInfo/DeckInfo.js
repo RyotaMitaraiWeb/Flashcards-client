@@ -85,6 +85,7 @@ export default function DeckInfo() {
             const { res, data } = await get(`/flashcard/${id}`);
             if (res.status === 200) {
                 setDeck(data);
+                document.title = data.deck.title;
             } else {
                 navigate('/page-not-found', { replace: true });
             }
