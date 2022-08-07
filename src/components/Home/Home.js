@@ -12,7 +12,7 @@ export default function Home(props) {
 
     const [decks, updateDecks] = useState([]);
     const [filter, setFilter] = useState('');
-    const filteredDecks = decks.filter(d => d.title.includes(filter));
+    const filteredDecks = decks.filter(d => d.title.toLowerCase().includes(filter.toLowerCase()));
     const previews = filteredDecks.map(deck => <DeckPreview key={deck._id} deck={deck} />);
 
     document.title = 'Начало';
@@ -51,7 +51,7 @@ export default function Home(props) {
                     :
                     <div className="decks">
                         <h2>Филтрирай моите тестета по заглавие</h2>
-                        <input type="text" id="filter" maxLength="75" onChange={handleChange} />
+                        <input type="text" id="filter" maxLength="100" onChange={handleChange} />
                         {previews}
                     </div>
                 }
