@@ -3,6 +3,7 @@
 * {
     box-sizing: border-box;
 }
+
 .app {
     display: flex;
     min-height: 100vh;
@@ -30,8 +31,13 @@
 
     &.dark-theme {
         background-color: $background-dark;
+        h1, h2, h3 {
+            color: #FFFFFF;
+            opacity: 0.87;
+        }
+
         #container {
-            background-color: $component-color-light;
+            background-color: $component-color-dark;
         }
 
         p.error {

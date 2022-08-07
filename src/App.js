@@ -15,6 +15,8 @@ import Delete from './components/Delete/Delete';
 import DeckInfo from './components/Deck/DeckInfo/DeckInfo';
 import Catalog from './components/Catalog/Catalog';
 import Random from './components/Random/Random';
+import Profile from './components/Profile/Profile';
+import { updatePreference } from './app/slices/preferences';
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Header = React.lazy(() => import('./components/Header/Header'));
@@ -25,12 +27,19 @@ function App() {
     const preferences = useSelector(state => state.preferences);
     const user = useSelector(state => state.user);
     const theme = preferences.theme + '-theme';
+    console.log(theme);
     const dispatch = useDispatch();
     useEffect(() => {
         async function fetchData() {
             const { res, data } = await requestService.get('/isLogged');
             if (res.ok) {
                 dispatch(updateUser(data));
+            }
+
+            const result = await requestService.get('/profile');
+            if (result.res.status === 200) {
+                console.log(result.data);
+                dispatch(updatePreference(result.data));
             }
         }
 
@@ -45,6 +54,11 @@ function App() {
                     <Route path="/about" element={<h2>За нас</h2>}></Route>
                     <Route path="/rules" element={<h2>Правила</h2>}></Route>
                     <Route path="/faq" element={<h2>Често задавани въпроси</h2>}></Route>
+                    <Route path="/profile" element={
+                        <LoggedInGuard>
+                            <Profile />
+                        </LoggedInGuard>
+                    }></Route>
                     <Route path="/login" element={
                         <GuestGuard>
                             <Login />

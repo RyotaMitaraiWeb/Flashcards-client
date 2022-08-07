@@ -1,0 +1,66 @@
+@import "../../variables.scss";
+
+#profile {
+    h1,
+    h2 {
+        text-align: center;
+    }
+    &.dark-theme {
+        background-color: $component-color-dark;
+        label {
+            color: white;
+            opacity: 0.87;
+        }
+
+        input {
+            border: 0.15em solid white;
+        }
+    }
+    form > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 20px;
+        padding: 10px;
+
+        label {
+            cursor: pointer;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            display: grid;
+            place-content: center;
+            align-items: center;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+            width: 1.15em;
+            height: 1.15em;
+            border: 0.15em solid black;
+            border-radius: 50%;
+            transform: translateY(0.15em);
+
+            &:before {
+                content: "";
+                width: 0.65em;
+                height: 0.65em;
+                border-radius: 50%;
+                transform: scale(0);
+                transition: 120ms transform ease-in-out;
+                box-shadow: inset 1em 1em rgb(21, 201, 201);
+            }
+
+            &.checked:before {
+                transform: scale(1);
+            }
+        }
+    }
+}

@@ -3,18 +3,18 @@ import { createSlice } from '@reduxjs/toolkit';
 const preferenceSlice = createSlice({
     name: 'preferences',
     initialState: {
-        color: 'purple',
+        colorTheme: 'purple',
         theme: 'light',
         animation: 'vertical',
     },
     reducers: {
         updatePreference(state, action) {
-            state.color = action.payload.color;
+            state.colorTheme = action.payload.colorTheme;
             state.theme = action.payload.theme;
             state.animation = action.payload.animation;
         },
         updateToDefaultPreferences(state) {
-            state.color = 'purple';
+            state.colorTheme = 'purple';
             state.theme = 'light';
             state.animation = 'vertical';
         },
