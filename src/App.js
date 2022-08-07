@@ -14,6 +14,7 @@ import Edit from './components/Edit/Edit';
 import Delete from './components/Delete/Delete';
 import DeckInfo from './components/Deck/DeckInfo/DeckInfo';
 import Catalog from './components/Catalog/Catalog';
+import Random from './components/Random/Random';
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Header = React.lazy(() => import('./components/Header/Header'));
@@ -68,6 +69,7 @@ function App() {
                     }>
                     </Route>
                     <Route path="/flashcard/all" element={<Catalog />}></Route>
+                    <Route path="/flashcard/random" element={<Random />}></Route>
                     <Route path="/flashcard/:id" element={<DeckInfo />}></Route>
                     <Route path="/flashcard/:id/edit" element={
                         <LoggedInGuard>

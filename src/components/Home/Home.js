@@ -49,7 +49,7 @@ export default function Home(props) {
                 }
                 <div className="random-link">
                     <h2>Случайно тесте</h2>
-                    <Link to="/" className="button purple"><Icon icon="random" /> Случайно тесте</Link>
+                    <Link to="/flashcard/random" className="button purple"><Icon icon="random" /> Случайно тесте</Link>
                 </div>
             </section>
         </>
