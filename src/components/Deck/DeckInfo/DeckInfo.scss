@@ -21,7 +21,7 @@
         background: white;
         border-radius: 5px;
         padding: 10px;
-        height: 350px;
+        min-height: 350px;
     }
 
     .info {
@@ -73,6 +73,7 @@
             @media only screen and (max-width: 910px) {
                 width: 300px;
                 text-align: center;
+
             }
 
             @media only screen and (max-width: 400px) {
@@ -181,7 +182,11 @@
                 padding: 30px;
                 width: 400px;
                 height: 400px;
+                font-size: 1.2rem;
 
+                &:first-child {
+                    font-weight: bold;
+                }
                 @media only screen and (max-width: 500px) {
                     width: 200px;
                     height: 200px;

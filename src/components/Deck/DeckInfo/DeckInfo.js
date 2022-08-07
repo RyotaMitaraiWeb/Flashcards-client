@@ -3,8 +3,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDateFormatter } from "../../../hooks/useDateFormatter";
+import { useShuffler } from "../../../hooks/useShuffler";
 import requestService from '../../../services/requests';
 import Icon from "../../Icon/Icon";
+import Session from "../../Session/Session";
 import './DeckInfo.scss';
 const { get } = requestService;
 
@@ -46,12 +48,13 @@ export default function DeckInfo() {
                 <div className="side">{d.back}</div>
             </div>
             <hr />
-        </div>)
+        </div>);
 
     const createDate = useDateFormatter(deck.deck.createdAt);
     const updateDate = useDateFormatter(deck.deck.updatedAt);
 
     const [checked, setCheck] = useState(false);
+    const randomizedDeck = useShuffler(deck.flashcards, checked);
 
     function check() {
         setCheck(state => !state);
@@ -72,10 +75,19 @@ export default function DeckInfo() {
         }
 
         fetchData();
+
+        return function() {
+            setToggle(false);
+        }
     }, [id, navigate, deck.title]);
 
     if (next) {
-        return <h1>Session</h1>
+        if (!checked) {
+            return <Session flashcards={deck.flashcards} />
+        } else {
+            console.log(randomizedDeck);
+            return <Session flashcards={randomizedDeck} />
+        }
     }
 
     return (
@@ -105,7 +117,7 @@ export default function DeckInfo() {
             </section>
             <section id="list">
                 <div className="toggle purple" tabIndex="0" onClick={toggleList}><span className="left">Списък на картите в това тесте ({deck.flashcards.length})</span> <span className="right"><Icon icon="plus" /></span></div>
-                <div className={"cards" + (toggle ? " hidden" : "")}>
+                <div className={"cards" + (!toggle ? " hidden" : "")}>
                     {list}
                 </div>
             </section>

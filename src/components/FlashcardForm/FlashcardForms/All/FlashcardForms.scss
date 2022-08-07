@@ -16,39 +16,8 @@
         text-align: center;
     }
 
-    .previous, .next {
-        background: none;
-        border: none;
-        font-size: 4rem;
-        text-align: center;
-        cursor: pointer;
-
-        &:hover {
-            opacity: 0.7;
-        }
-
-        &:active {
-            text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px #eeeeee, 2px 1px 1px #cccccc, 1px 2px 1px #eeeeee,
-                3px 2px 1px #cccccc, 2px 3px 1px #eeeeee, 4px 3px 1px #cccccc, 3px 4px 1px #eeeeee, 5px 4px 1px #cccccc,
-                4px 5px 1px #eeeeee, 6px 5px 1px #cccccc, 5px 6px 1px #eeeeee, 7px 6px 1px #cccccc,
-                -10px 8px 17px rgba(157, 115, 141, 0.54);
-        }
-
-        @media only screen and (max-width: 700px) {
-            font-size: 3rem;
-        }
-
-        @media only screen and (max-width: 450px) {
-            font-size: 2rem;
-        }
-
-        @media only screen and (max-width: 350px) {
-            font-size: 1.3rem;
-        }
-    }
-
-    .invisible {
-        visibility: hidden;
+    .next, .previous {
+        @include arrow;
     }
 
     .forms {
