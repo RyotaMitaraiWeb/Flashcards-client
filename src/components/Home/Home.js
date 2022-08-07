@@ -11,9 +11,17 @@ export default function Home(props) {
     useCloseMenu();
 
     const [decks, updateDecks] = useState([]);
-    const previews = decks.map(deck => <DeckPreview key={deck._id} deck={deck} />);
+    const [filter, setFilter] = useState('');
+    const filteredDecks = decks.filter(d => d.title.includes(filter));
+    const previews = filteredDecks.map(deck => <DeckPreview key={deck._id} deck={deck} />);
 
     document.title = 'Начало';
+
+    function handleChange(event) {
+        event.preventDefault();
+        const filter = event.target.value;
+        setFilter(filter);
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -43,7 +51,7 @@ export default function Home(props) {
                     :
                     <div className="decks">
                         <h2>Филтрирай моите тестета по заглавие</h2>
-                        <input type="text" maxLength="75" />
+                        <input type="text" id="filter" maxLength="75" onChange={handleChange} />
                         {previews}
                     </div>
                 }

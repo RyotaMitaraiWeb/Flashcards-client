@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 #home {
     display: grid;
@@ -39,7 +39,19 @@
         background-color: white;
     }
 
-    h2, h3 {
+    #filter {
+        border: 1px solid black;
+        border-radius: 14px;
+        padding: 20px;
+        width: 60%;
+        margin-left: 5px;
+        &::placeholder {
+            font-style: italic;
+        }
+    }
+
+    h2,
+    h3 {
         margin-bottom: 1.5em;
     }
 
@@ -53,7 +65,8 @@
             }
         }
 
-        &.catalog-link, &.random-link {
+        &.catalog-link,
+        &.random-link {
             & > .button {
                 text-decoration: none;
                 font-weight: bold;
