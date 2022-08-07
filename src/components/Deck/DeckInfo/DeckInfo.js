@@ -8,12 +8,13 @@ import requestService from '../../../services/requests';
 import Icon from "../../Icon/Icon";
 import Session from "../../Session/Session";
 import './DeckInfo.scss';
-const { get } = requestService;
+const { get, post } = requestService;
 
 export default function DeckInfo() {
     const user = useSelector(state => state.user.id);
     const { id } = useParams();
     const navigate = useNavigate();
+    const [bookmarked, setBookmark] = useState(false);
 
     const [toggle, setToggle] = useState(false);
 
@@ -64,6 +65,21 @@ export default function DeckInfo() {
         setToggle(state => !state);
     }
 
+    function bookmarkDeck() {
+        async function bookmark() {
+            const { res } = await post(`/flashcard/${id}/bookmark`);
+            if (res.status === 201) {
+                setBookmark(true);
+            } else {
+                setBookmark(false);
+            }
+
+            console.log(res.status);
+        }
+
+        bookmark();
+    }
+
     useEffect(() => {
         async function fetchData() {
             const { res, data } = await get(`/flashcard/${id}`);
@@ -72,11 +88,18 @@ export default function DeckInfo() {
             } else {
                 navigate('/page-not-found', { replace: true });
             }
+
+            const result = await get(`/flashcard/${id}/hasBookmarked`);
+            if (result.res.status !== 200) {
+                setBookmark(false);
+            } else {
+                setBookmark(true);
+            }
         }
 
         fetchData();
 
-        return function() {
+        return function () {
             setToggle(false);
         }
     }, [id, navigate, deck.title]);
@@ -106,7 +129,15 @@ export default function DeckInfo() {
                             <Link to={`/flashcard/${deck.deck._id}/edit`} className="purple button"><Icon icon="pencil-alt" /> Редактирай</Link>
                             <Link to={`/flashcard/${deck.deck._id}/delete`} className="delete button"><Icon icon="trash" /> Изтрий</Link>
                         </>
-                        : null
+                        : (
+                            user !== ''
+                                ? <div className="group save">
+                                    <button onClick={bookmarkDeck} className={"bookmark" + (bookmarked ? " bookmarked" : "")} id="bookmark"><Icon icon="bookmark" /></button>
+                                    <label htmlFor="bookmark">Запази тесте</label>
+                                </div>
+                                : null
+                        )
+
                     }
                     <div className="group">
                         <input type="checkbox" id="shuffle" onChange={check} checked={checked} />

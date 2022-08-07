@@ -106,6 +106,7 @@
 
             .checkmark {
                 // position: absolute;
+                transition: background-color 0.2s;
                 display: inline-block;
                 height: 20px;
                 width: 20px;
@@ -118,6 +119,42 @@
                     background: $valid;
                 }
             }
+        }
+
+        .save {
+            .bookmark {
+                cursor: pointer;
+                border: 1px solid black;
+                border-radius: 10px;
+                display: block;
+                transition: background-color 0.15s;
+                background: #DFDFDF;
+                width: 30px;
+                height: 30px;
+                text-align: center;
+
+                &.bookmarked {
+                    background: #ababab;
+                }
+
+                .fa {
+                    color: white;
+                    transition: color 0.15s;
+                    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+                    display: inline-block;
+                    margin-left: 2px;
+                    // display: flex;
+                    // justify-content: center;
+                }
+
+                &.bookmarked > .fa {
+                    color: #F9D729;
+                }
+            }
+
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
     }
 }

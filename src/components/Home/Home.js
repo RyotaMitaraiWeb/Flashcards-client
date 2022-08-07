@@ -43,7 +43,7 @@ export default function Home(props) {
                     :
                     <div className="decks">
                         <h2>Филтрирай моите тестета по заглавие</h2>
-                        <input type="text" maxLength={150} />
+                        <input type="text" maxLength="75" />
                         {previews}
                     </div>
                 }
