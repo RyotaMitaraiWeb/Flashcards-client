@@ -32,7 +32,7 @@ export default function Home(props) {
             <section id="home" className="purple-theme light-theme">
                 <div className="catalog-link">
                     <h2>Всички тестета</h2>
-                    <Link to="/all" className="button purple"><Icon icon="newspaper" /> Виж всички тестета</Link>
+                    <Link to="/flashcard/all" className="button purple"><Icon icon="newspaper" /> Виж всички тестета</Link>
                 </div>
                 {props.id === ''
                     ? 
