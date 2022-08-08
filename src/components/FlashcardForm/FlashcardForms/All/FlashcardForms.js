@@ -13,6 +13,10 @@ export default function FlashcardForms(props) {
     const navigate = useNavigate();
     const flashcardsInfo = useSelector(state => state.flashcards);
 
+    const preference = useSelector(state => state.preferences);
+    const colorTheme = preference.colorTheme;
+    const theme = preference.theme + '-theme';
+
     const [data, updateData] = useState(props?.deck?.flashcards || [{
         front: '',
         back: ''
@@ -83,7 +87,6 @@ export default function FlashcardForms(props) {
                     flashcards: data,
                 });
             } else {
-                console.log(data);
                 result = await put(`/flashcard/${props.id}/edit`, {
                     title: flashcardsInfo.title,
                     description: flashcardsInfo.description,
@@ -129,7 +132,7 @@ export default function FlashcardForms(props) {
             <div className="actions-form">
                 <button className={"button add" + (data.length === 75 ? " hidden" : "")} onClick={addCard}><Icon icon="plus-circle" /> Добави нова карта</button>
                 <button className={"button delete" + (data.length === 1 ? " hidden" : "")} onClick={deleteCard}><Icon icon="trash" /> Изтрий тази карта</button>
-                <button className="button purple save" onClick={saveDeck}><Icon icon="check" /> Запази тесте</button>
+                <button className={`button ${colorTheme} save`} onClick={saveDeck}><Icon icon="check" /> Запази тесте</button>
             </div>
         </>
     );

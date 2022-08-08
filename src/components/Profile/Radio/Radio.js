@@ -10,7 +10,7 @@ export default function Checkbox(props) {
     return (
         <div className="radio">
             <input type="radio" value={props.value} id={props.value} name={props.name} checked={props.value === props.current} className={props.value === props.current ? "checked" : ""} onChange={props.changeHandler} />
-            <label htmlFor={props.value}>{props.value}</label>
+            <label htmlFor={props.value}>{props.label}</label>
         </div>
     )
 }

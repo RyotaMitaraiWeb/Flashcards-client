@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useCloseMenu } from '../../../hooks/useCloseMenu';
 import validationService from '../../../services/validation';
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { updateBasicInfo } from '../../../app/slices/newFlashcard';
 import Error from '../../Feedback/Error';
 import Button from '../../Button/Button';
@@ -13,6 +13,9 @@ const { validateTitle, validateDescription } = validationService;
 export default function BasicInfoForm(props) {
     useCloseMenu();
     const dispatch = useDispatch();
+
+    const preferences = useSelector(state => state.preferences);
+    const theme = preferences.theme + '-theme'
 
     const [title, updateTitle] = useState(props?.deck?.deck?.title || '');
     const [description, updateDescription] = useState(props?.deck?.deck?.description || '');
@@ -58,7 +61,7 @@ export default function BasicInfoForm(props) {
     return (
         <>
             <h1>{props.endpoint === 'create' ? 'Създай ново' : `Редактирай`} тесте</h1>
-            <form id="basic-info-form" className="form" onSubmit={handleSubmit}>
+            <form id="basic-info-form" className={`form ${theme}`} onSubmit={handleSubmit}>
                 <div className="group">
                     <label htmlFor="title">Заглавие ({titleLength}/100)</label>
                     <input type="text" id="title" value={title} placeholder="Заглавие" maxLength="100" onChange={changeTitle} />

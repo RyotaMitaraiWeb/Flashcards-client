@@ -5,9 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useCloseMenu } from '../../../hooks/useCloseMenu';
+import { updatePreference } from "../../../app/slices/preferences";
 import Button from '../../Button/Button';
 import authService from '../../../services/auth';
 import { updateUser } from '../../../app/slices/user';
+import requestService from '../../../services/requests';
+const { get } = requestService;
 const { login } = authService;
 
 export default function Login() {
@@ -27,6 +30,10 @@ export default function Login() {
         const { res, data } = await login(body);
         if (res.status === 200) {
             dispatch(updateUser(data));
+            const result = await get('/profile');
+            if (result.res.status === 200) {
+                dispatch(updatePreference(result.data));
+            }
             navigate('/', { replace: true });
         } else {
             updateError(true);

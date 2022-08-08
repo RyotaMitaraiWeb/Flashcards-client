@@ -1,6 +1,8 @@
-@import '../../../form.scss';
+@import '../../../variables.scss';
 
 #basic-info-form {
+    @include form;
+    
     textarea {
         resize: vertical;
     }

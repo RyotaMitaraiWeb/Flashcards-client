@@ -13,8 +13,11 @@ export default function Home(props) {
 
     const [decks, updateDecks] = useState([]);
     const [filter, setFilter] = useState('');
+
     const preference = useSelector(state => state.preferences);
     const theme = preference.theme + '-theme';
+    const colorTheme = preference.colorTheme;
+    
     const filteredDecks = decks.filter(d => d.title.toLowerCase().includes(filter.toLowerCase()));
     const previews = filteredDecks.map(deck => <DeckPreview key={deck._id} deck={deck} />);
 
@@ -43,7 +46,7 @@ export default function Home(props) {
             <section id="home" className={`purple-theme ${theme}`}>
                 <div className="catalog-link">
                     <h2>Всички тестета</h2>
-                    <Link to="/flashcard/all" className="button purple"><Icon icon="newspaper" /> Виж всички тестета</Link>
+                    <Link to="/flashcard/all" className={`button ${colorTheme}`}><Icon icon="newspaper" /> Виж всички тестета</Link>
                 </div>
                 {props.id === ''
                     ? 
@@ -60,7 +63,7 @@ export default function Home(props) {
                 }
                 <div className="random-link">
                     <h2>Случайно тесте</h2>
-                    <Link to="/flashcard/random" className="button purple"><Icon icon="random" /> Случайно тесте</Link>
+                    <Link to="/flashcard/random" className={`button ${colorTheme}`}><Icon icon="random" /> Случайно тесте</Link>
                 </div>
             </section>
         </>

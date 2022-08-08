@@ -12,6 +12,11 @@ const { get, post } = requestService;
 
 export default function DeckInfo() {
     const user = useSelector(state => state.user.id);
+    const preference = useSelector(state => state.preferences);
+
+    const colorTheme = preference.colorTheme;
+    const theme = preference.theme + '-theme';
+
     const { id } = useParams();
     const navigate = useNavigate();
     const [bookmarked, setBookmark] = useState(false);
@@ -127,7 +132,7 @@ export default function DeckInfo() {
                     {deck.deck.author === user
                         ?
                         <>
-                            <Link to={`/flashcard/${deck.deck._id}/edit`} className="purple button"><Icon icon="pencil-alt" /> Редактирай</Link>
+                            <Link to={`/flashcard/${deck.deck._id}/edit`} className={`${colorTheme} button`}><Icon icon="pencil-alt" /> Редактирай</Link>
                             <Link to={`/flashcard/${deck.deck._id}/delete`} className="delete button"><Icon icon="trash" /> Изтрий</Link>
                         </>
                         : (
@@ -144,11 +149,11 @@ export default function DeckInfo() {
                         <input type="checkbox" id="shuffle" onChange={check} checked={checked} />
                         <label htmlFor="shuffle"><span className={"checkmark" + (checked ? " checked" : "")}><Icon icon="check" /></span> Разбъркай тестето</label>
                     </div>
-                    <button className="start button purple" onClick={updateNext}>Започни учебна сесия</button>
+                    <button className={`start ${colorTheme} button`} onClick={updateNext}>Започни учебна сесия</button>
                 </div>
             </section>
             <section id="list">
-                <div className="toggle purple" tabIndex="0" onClick={toggleList}><span className="left">Списък на картите в това тесте ({deck.flashcards.length})</span> <span className="right"><Icon icon="plus" /></span></div>
+                <div className={`${colorTheme} toggle`} tabIndex="0" onClick={toggleList}><span className="left">Списък на картите в това тесте ({deck.flashcards.length})</span> <span className="right"><Icon icon={toggle ? "minus" : "plus"} /></span></div>
                 <div className={"cards" + (!toggle ? " hidden" : "")}>
                     {list}
                 </div>

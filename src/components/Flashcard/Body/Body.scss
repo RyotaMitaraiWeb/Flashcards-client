@@ -3,10 +3,37 @@
 .flashcard-body {
     display: block;
     margin: 0 auto 1em;
-    border: 1px solid black;
     border-top: none;
     text-align: left;
-    background: $component-color-light;
+
+    &.light-theme {
+        background: $component-color-light;
+        border: 1px solid black;
+    }
+
+    &.dark-theme {
+        background: $component-color-dark;
+        border: 1px solid white;
+
+        &.preview {
+            background: $background-dark;
+        }
+
+        h1,
+        h2,
+        h3 {
+            a {
+                color: white;
+                opacity: 0.87;
+            }
+        }
+
+        .author, .date {
+            color: white;
+            opacity: 0.87;
+        }
+    }
+
     &.preview {
         width: 95%;
         min-height: 184px;
@@ -44,7 +71,7 @@
             .actions {
                 display: flex;
                 flex-direction: column;
-                
+
                 .button {
                     border-radius: 50px;
                     padding: 5px;

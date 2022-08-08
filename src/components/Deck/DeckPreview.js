@@ -13,6 +13,10 @@ export default function DeckPreview(props) {
     const date = useDateFormatter(props.deck.createdAt);
     const [deleted, setDelete] = useState(false);
 
+    const preference = useSelector(state => state.preferences);
+    const theme = preference.theme + '-theme';
+    const colorTheme = preference.colorTheme;
+
     function unbookmarkDeck() {
         async function unbookmark() {
             const { res } = await post(`/flashcard/${props.deck._id}/bookmark`);
@@ -41,7 +45,7 @@ export default function DeckPreview(props) {
                         {user !== props.deck.author
                             ? <button className="remove button" onClick={unbookmarkDeck}><Icon icon="times" /> Премахни</button>
                             : <>
-                                <Link to={`/flashcard/${props.deck._id}/edit`} className="purple button"><Icon icon="pencil-alt" /> Редактирай</Link>
+                                <Link to={`/flashcard/${props.deck._id}/edit`} className={`${colorTheme} button`}><Icon icon="pencil-alt" /> Редактирай</Link>
                                 <Link to={`/flashcard/${props.deck._id}/delete`} className="remove button"><Icon icon="trash-alt" /> Изтрии</Link>
                             </>
                         }
