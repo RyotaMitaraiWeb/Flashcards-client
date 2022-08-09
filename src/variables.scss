@@ -10,6 +10,7 @@ $component-color-dark: #212121;
 
 @mixin text-color-dark {
     color: rgba(255, 255, 255, 0.87);
+    opacity: 0.87;
 }
 
 $theme-purple: #5f3690;
@@ -32,6 +33,14 @@ $hyperlink-light: #214f4f;
     font-size: 4rem;
     text-align: center;
     cursor: pointer;
+
+    &.dark-theme {
+        color: white !important;
+
+        &:active {
+            text-shadow: 15px 15px 15px #000000;
+        }
+    }
 
     &:hover {
         opacity: 0.7;
@@ -105,7 +114,7 @@ $hyperlink-light: #214f4f;
             }
 
             &:focus {
-                border: 2px solid #C5BDBD;
+                border: 2px solid #c5bdbd;
             }
         }
 

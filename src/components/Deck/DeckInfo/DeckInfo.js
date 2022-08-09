@@ -114,14 +114,13 @@ export default function DeckInfo() {
         if (!checked) {
             return <Session flashcards={deck.flashcards} />
         } else {
-            console.log(randomizedDeck);
             return <Session flashcards={randomizedDeck} />
         }
     }
 
     return (
         <>
-            <section className="deck-info">
+            <section className={`deck-info ${theme}`}>
                 <div className="info">
                     <h1>{deck.deck.title}</h1>
                     <p className="author">Създадено от <strong>{deck.deck.authorUsername}</strong> на {createDate}. Последно редактирано на {updateDate}.</p>
@@ -143,8 +142,8 @@ export default function DeckInfo() {
                                 </div>
                                 : null
                         )
-
                     }
+
                     <div className="group">
                         <input type="checkbox" id="shuffle" onChange={check} checked={checked} />
                         <label htmlFor="shuffle"><span className={"checkmark" + (checked ? " checked" : "")}><Icon icon="check" /></span> Разбъркай тестето</label>
@@ -152,7 +151,7 @@ export default function DeckInfo() {
                     <button className={`start ${colorTheme} button`} onClick={updateNext}>Започни учебна сесия</button>
                 </div>
             </section>
-            <section id="list">
+            <section id="list" className={theme}>
                 <div className={`${colorTheme} toggle`} tabIndex="0" onClick={toggleList}><span className="left">Списък на картите в това тесте ({deck.flashcards.length})</span> <span className="right"><Icon icon={toggle ? "minus" : "plus"} /></span></div>
                 <div className={"cards" + (!toggle ? " hidden" : "")}>
                     {list}

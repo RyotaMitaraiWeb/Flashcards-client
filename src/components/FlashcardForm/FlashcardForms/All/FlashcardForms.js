@@ -103,10 +103,10 @@ export default function FlashcardForms(props) {
 
     return (
         <>
-            <p className="count">{counter + 1} / {data.length}</p>
+            <p className={`count ${theme}`}>{counter + 1} / {data.length}</p>
             <div id="flashcard-form">
                 <div className="group">
-                    <button className={"previous" + (counter === 0 ? " invisible" : "")} onClick={decrement}><Icon icon="arrow-left" /></button>
+                    <button className={theme + " previous" + (counter === 0 ? " invisible" : "")} onClick={decrement}><Icon icon="arrow-left" /></button>
                 </div>
                 <div className="forms">
                     <>
@@ -125,10 +125,10 @@ export default function FlashcardForms(props) {
                     </>
                 </div>
                 <div className="group">
-                    <button className={"next" + (counter >= data.length - 1 ? " invisible" : "")} onClick={increment}><Icon icon="arrow-right" /></button>
+                    <button className={theme + " next" + (counter >= data.length - 1 ? " invisible" : "")} onClick={increment}><Icon icon="arrow-right" /></button>
                 </div>
             </div>
-            <p className="count">{counter + 1} / {data.length}</p>
+            <p className={`count ${theme}`}>{counter + 1} / {data.length}</p>
             <div className="actions-form">
                 <button className={"button add" + (data.length === 75 ? " hidden" : "")} onClick={addCard}><Icon icon="plus-circle" /> Добави нова карта</button>
                 <button className={"button delete" + (data.length === 1 ? " hidden" : "")} onClick={deleteCard}><Icon icon="trash" /> Изтрий тази карта</button>

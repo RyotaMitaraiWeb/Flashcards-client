@@ -12,8 +12,19 @@
     }
 
     &.dark-theme {
+        textarea {
+            background: $component-color-dark;
+            color: white;
+            opacity: 0.87;
+        }
+        
         background: $component-color-dark;
         border: 1px solid white;
+        color: white;
+
+        .flashcard-side {
+            opacity: 0.87;
+        }
 
         &.preview {
             background: $background-dark;

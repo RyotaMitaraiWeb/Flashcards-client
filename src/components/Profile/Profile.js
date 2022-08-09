@@ -12,6 +12,7 @@ export default function Profile() {
     useCloseMenu();
     const { colorTheme, theme, animation } = useSelector(state => state.preferences);
     const username = useSelector(state => state.user.username);
+    document.title = `Профил на ${username}`;
 
     const dispatch = useDispatch();
 

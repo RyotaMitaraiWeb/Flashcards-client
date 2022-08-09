@@ -3,11 +3,15 @@ import Icon from '../Icon/Icon';
 import { useState } from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import './Session.scss';
+import { useSelector } from 'react-redux';
 
 export default function Session(props) {
     const cards = props.flashcards;
     const [counter, updateCounter] = useState(0);
     const [isFlipped, setFlip] = useState(false);
+    const preference = useSelector(state => state.preferences);
+    const theme = preference.theme + '-theme';
+    const animation = preference.animation;
 
     function increment() {
         setFlip(false);
@@ -25,13 +29,13 @@ export default function Session(props) {
 
     return (
         <>
-            <p className="count">{counter + 1} / {cards.length}</p>
+            <p className={`count ${theme}`}>{counter + 1} / {cards.length}</p>
             <section className="session">
                 <div className="group arrows">
-                    <button className={"previous" + (counter === 0 ? " invisible" : "")} onClick={decrement}><Icon icon="arrow-left" /></button>
+                    <button className={theme + " previous" + (counter === 0 ? " invisible" : "")} onClick={decrement}><Icon icon="arrow-left" /></button>
                 </div>
                 <Flippy
-                    flipDirection="vertical"
+                    flipDirection={animation}
                     isFlipped={isFlipped}
                     onClick={flip}
                 >
@@ -51,7 +55,7 @@ export default function Session(props) {
                     </BackSide>
                 </Flippy>
                 <div className="group arrows">
-                    <button className={"next" + (counter >= cards.length - 1 ? " invisible" : "")} onClick={increment}><Icon icon="arrow-right" /></button>
+                    <button className={theme + " next" + (counter >= cards.length - 1 ? " invisible" : "")} onClick={increment}><Icon icon="arrow-right" /></button>
                 </div>
             </section>
         </>)

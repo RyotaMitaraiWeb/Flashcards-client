@@ -56,6 +56,12 @@
         &::placeholder {
             font-style: italic;
         }
+
+        &.dark-theme {
+            background: $background-dark;
+            border: 1px solid white;
+            color: white;
+        }
     }
 
     h2,

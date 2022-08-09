@@ -57,7 +57,7 @@ export default function Home(props) {
                     :
                     <div className="decks">
                         <h2>Филтрирай моите тестета по заглавие</h2>
-                        <input type="text" id="filter" maxLength="100" onChange={handleChange} />
+                        <input type="text" className={theme} id="filter" maxLength="100" onChange={handleChange} />
                         {previews}
                     </div>
                 }

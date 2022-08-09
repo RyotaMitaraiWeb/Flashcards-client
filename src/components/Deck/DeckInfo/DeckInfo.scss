@@ -8,6 +8,33 @@
     flex-wrap: wrap;
     padding: 50px;
 
+    &.dark-theme {
+        & > div {
+            background: $component-color-dark;
+            p,
+            label {
+                color: white;
+                opacity: 0.87;
+            }
+
+            &.actions-session > div.group > label[for="shuffle"] > .checkmark {
+                background: $background-dark;
+                border: 1px solid white;
+
+                &.checked {
+                    background: $valid;
+                }
+            }
+
+            .save {
+                .bookmark {
+                    background: $background-dark;
+                    border: 1px solid white;
+                }
+            }
+        }
+    }
+
     @media only screen and (max-width: 910px) {
         flex-direction: column;
         gap: 30px;
@@ -73,7 +100,6 @@
             @media only screen and (max-width: 910px) {
                 width: 300px;
                 text-align: center;
-
             }
 
             @media only screen and (max-width: 400px) {
@@ -84,8 +110,6 @@
             &.delete {
                 background-color: $remove-light;
             }
-
-            
         }
 
         div.group {
@@ -128,7 +152,7 @@
                 border-radius: 10px;
                 display: block;
                 transition: background-color 0.15s;
-                background: #DFDFDF;
+                background: #dfdfdf;
                 width: 30px;
                 height: 30px;
                 text-align: center;
@@ -148,7 +172,7 @@
                 }
 
                 &.bookmarked > .fa {
-                    color: #F9D729;
+                    color: #f9d729;
                 }
             }
 
@@ -163,6 +187,12 @@
     margin-bottom: 1em;
     width: 95%;
 
+    &.dark-theme > .cards > div > .card > .side {
+        background: $component-color-dark;
+        color: white;
+        opacity: 0.87;
+    }
+
     .toggle {
         color: white;
         font-weight: bold;
@@ -174,14 +204,14 @@
         .left {
             text-align: left;
         }
-    
+
         .right {
             float: right;
             @media only screen and (max-width: 425px) {
                 float: none;
             }
         }
-    
+
         &:active {
             opacity: 0.9;
         }
