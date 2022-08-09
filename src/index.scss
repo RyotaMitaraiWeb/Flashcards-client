@@ -92,3 +92,7 @@ h1 {
     color: white;
     opacity: 0.87;
 }
+
+h1, h2, h3 {
+    transition: color 0.4s;
+}
