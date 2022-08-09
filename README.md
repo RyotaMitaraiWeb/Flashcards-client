@@ -12,6 +12,8 @@ npm start
 
 In addition, you need to download and run the server associated with this project. Check out [its repository](https://github.com/RyotaMitaraiWeb/Flashbacks-server) to learn more about running it.
 
+**Note:** the application will be launched on http://localhost:3000/Flashcard-client (which is a non-existant URL). Simply navigate to the index (or any other) page to see a web page render
+
 ## Application structure (folders)
 
 ### app
