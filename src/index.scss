@@ -31,6 +31,14 @@
     }
 
     &.dark-theme {
+        .button {
+            &:active:not(:disabled) {
+                filter: brightness(0.7);
+                opacity: 1;
+                border: 3px solid white;
+            }
+        }
+
         background-color: $background-dark;
         h1, h2, h3 {
             color: #FFFFFF;
@@ -95,5 +103,5 @@ h1 {
 }
 
 h1, h2, h3 {
-    transition: color 0.4s;
+    transition: color 0.4s, background-color 0.4s, opacity 0.4s;
 }
