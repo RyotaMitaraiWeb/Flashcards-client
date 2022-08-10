@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .flashcard-head {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -10,6 +12,7 @@
 
     &.dark-theme {
         border: 1px solid white;
+        @include box-shadow-dark-right;
     }
 
     &.preview {

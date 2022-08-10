@@ -43,7 +43,7 @@ export default function Home(props) {
     return (
         <>
             <h1>Моите тестета</h1>
-            <section id="home" className={`purple-theme ${theme}`}>
+            <section id="home" className={theme}>
                 <div className="catalog-link">
                     <h2>Всички тестета</h2>
                     <Link to="/flashcard/all" className={`button ${colorTheme}`}><Icon icon="newspaper" /> Виж всички тестета</Link>

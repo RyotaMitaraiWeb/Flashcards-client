@@ -9,6 +9,14 @@
     width: 95%;
     border-radius: 25px;
 
+    &.light-theme {
+        @include box-shadow-light-right;
+    }
+
+    &.dark-theme {
+        @include box-shadow-dark-right;
+    }
+
     @media only screen and (max-width: 1090px) {
         grid-template-columns: 1fr;
         gap: 30px;

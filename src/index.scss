@@ -16,16 +16,16 @@
     &.light-theme {
         background-color: $background-light;
         #container {
-            background-color: $component-color-light
+            background-color: $component-color-light;
         }
 
         p.error {
-            color: #CC0000;
+            color: #cc0000;
             font-weight: bold;
         }
 
         p.valid {
-            color: #0E7206;
+            color: #0e7206;
             font-weight: bold;
         }
     }
@@ -40,8 +40,10 @@
         }
 
         background-color: $background-dark;
-        h1, h2, h3 {
-            color: #FFFFFF;
+        h1,
+        h2,
+        h3 {
+            color: #ffffff;
             opacity: 0.87;
         }
 
@@ -60,7 +62,6 @@
     }
 }
 
-
 h1 {
     text-align: center;
     @media only screen and (max-width: 450px) {
@@ -69,7 +70,7 @@ h1 {
 }
 
 .purple {
-    background-color: $theme-purple
+    background-color: $theme-purple;
 }
 
 .pink {
@@ -102,10 +103,13 @@ h1 {
     opacity: 0.87;
 }
 
-h1, h2, h3, a {
+h1,
+h2,
+h3,
+a {
     transition: color 0.4s, background-color 0.4s, opacity 0.4s;
 }
 
 .button {
-    @include button
+    @include button;
 }

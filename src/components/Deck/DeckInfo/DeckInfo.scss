@@ -11,6 +11,14 @@
     &.dark-theme {
         & > div {
             background: $component-color-dark;
+            &.info {
+                @include box-shadow-dark-right;
+            }
+
+            &.actions-session {
+                @include box-shadow-dark-left;
+            }
+
             p,
             label {
                 color: white;
@@ -55,6 +63,8 @@
 
     .info {
         width: 55%;
+        @include box-shadow-light-right;
+
         @media only screen and (max-width: 910px) {
             width: 100%;
         }
@@ -81,6 +91,7 @@
         flex-direction: column;
         justify-content: center;
         gap: 5px;
+        @include box-shadow-light-left;
 
         @media only screen and (max-width: 910px) {
             width: 100%;
@@ -193,6 +204,12 @@
         background: $component-color-dark;
         color: white;
         opacity: 0.87;
+        @include box-shadow-dark-left;
+
+        &:first-child {
+            font-weight: bold;
+            @include box-shadow-dark-right;
+        }
     }
 
     .toggle {
@@ -252,10 +269,13 @@
                 width: 400px;
                 height: 400px;
                 font-size: 1.2rem;
+                @include box-shadow-light-left;
 
                 &:first-child {
                     font-weight: bold;
+                    @include box-shadow-light-right;
                 }
+
                 @media only screen and (max-width: 500px) {
                     width: 200px;
                     height: 200px;

@@ -5,13 +5,18 @@
     margin: 0 auto 1em;
     border-top: none;
     text-align: left;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 
     &.light-theme {
         background: $component-color-light;
         border: 1px solid black;
+        @include box-shadow-light-right;
     }
 
     &.dark-theme {
+        @include box-shadow-dark-right;
+
         textarea {
             background: $component-color-dark;
             color: white;

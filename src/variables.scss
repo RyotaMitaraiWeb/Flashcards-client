@@ -229,7 +229,7 @@ $hyperlink-light: #214f4f;
 @mixin button {
     position: relative;
     z-index: 1;
-    
+
     border: 3px solid transparent;
     transition: filter 0.2s, border 0.5s, opacity 0.2s;
     cursor: pointer;
@@ -250,4 +250,24 @@ $hyperlink-light: #214f4f;
         opacity: 0.8;
         cursor: no-drop;
     }
+}
+
+@mixin box-shadow-light-left {
+    -webkit-box-shadow: -6px 5px 5px -3px #000000;
+    box-shadow: -6px 5px 5px -3px #000000;
+}
+
+@mixin box-shadow-light-right {
+    -webkit-box-shadow: 7px 6px 5px -8px #000000;
+    box-shadow: 7px 6px 5px -8px #000000;
+}
+
+@mixin box-shadow-dark-left {
+    -webkit-box-shadow: -6px 5px 5px -8px #fff;
+    box-shadow: -6px 5px 5px -8px #fff;
+}
+
+@mixin box-shadow-dark-right {
+    -webkit-box-shadow: 7px 6px 5px -8px #fff;
+    box-shadow: 7px 6px 5px -8px #fff;
 }
