@@ -225,3 +225,29 @@ $hyperlink-light: #214f4f;
         }
     }
 }
+
+@mixin button {
+    position: relative;
+    z-index: 1;
+    
+    border: 3px solid transparent;
+    transition: filter 0.2s, border 0.5s, opacity 0.2s;
+    cursor: pointer;
+    font-weight: bold;
+
+    margin-bottom: 2rem;
+    &:hover:not(:disabled) {
+        filter: brightness(0.8);
+    }
+
+    &:active:not(:disabled) {
+        filter: brightness(0.7);
+        opacity: 1;
+        border: 3px solid black;
+    }
+
+    &:disabled {
+        opacity: 0.8;
+        cursor: no-drop;
+    }
+}

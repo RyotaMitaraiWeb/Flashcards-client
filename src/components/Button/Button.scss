@@ -1,33 +1,6 @@
 @import '../../variables.scss';
 
 .button {
-    @include text-color-dark;
-    position: relative;
-    z-index: 1;
-    // &.light-theme {
-    //     border: 2px solid rgb(69, 66, 66);
-    // }
-
-    // &.dark-theme {
-    //     border: 2px solid rgba(255, 255, 255, 0.87);
-    // }
-    border: 3px solid transparent;
-    transition: filter 0.2s, border 0.5s, opacity 0.2s;
-    cursor: pointer;
-
-    margin-bottom: 2rem;
-    &:hover:not(:disabled) {
-        filter: brightness(0.8);
-    }
-
-    &:active:not(:disabled) {
-        filter: brightness(0.7);
-        opacity: 1;
-        border: 3px solid black;
-    }
-
-    &:disabled {
-        opacity: 0.8;
-        cursor: no-drop;
-    }
+    @include button;
+    color: white;
 }
