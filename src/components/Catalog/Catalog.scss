@@ -1,4 +1,13 @@
+@import '../../variables.scss';
+
 .catalog {
+
+    &.dark-theme {
+        .flashcard-body {
+            background: $component-color-dark;
+        }
+    }
+
     article {
         display: flex;
         flex-direction: column;

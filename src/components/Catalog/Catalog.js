@@ -4,9 +4,11 @@ import Flashcard from '../Flashcard/Flashcard';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import './Catalog.scss';
+import { useSelector } from 'react-redux/es/exports';
 const { get } = requestService;
 
 export default function Catalog() {
+    const theme = useSelector(state => state.preferences.theme) + '-theme';
     const [data, setData] = useState([]);
     const decks = data.map(d => {
         const shortDescription = d?.description?.slice(0, 201) || '';
@@ -35,7 +37,7 @@ export default function Catalog() {
     });
 
     return (
-        <section className="catalog">
+        <section className={`catalog ${theme}`}>
             {decks}
         </section>
     )
