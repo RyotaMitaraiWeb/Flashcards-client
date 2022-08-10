@@ -16,6 +16,10 @@
         }
     }
 
+    .flashcard-body, .flashcard-head {
+        cursor: pointer;
+    }
+
     .flashcard-side {
         padding: 30px;
         font-size: 1.2rem;
