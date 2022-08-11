@@ -27,6 +27,10 @@
             border: 4px solid white;
         }
 
+        &:after {
+            border-color: white transparent transparent transparent;
+        }
+
         &.toggled {
             opacity: 1;
         }
@@ -81,7 +85,7 @@
         margin-left: -10px;
         border-width: 5px;
         border-style: solid;
-        border-color: #555 transparent transparent transparent;
+        border-color: black transparent transparent transparent;
         z-index: 2;
     }
 
