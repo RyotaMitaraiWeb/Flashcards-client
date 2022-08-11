@@ -1,0 +1,52 @@
+@import '../../variables.scss';
+
+#results {
+    &.dark-theme {
+        .flashcard-body {
+            background: $component-color-dark;
+        }
+    }
+
+    &.light-theme {
+        a {
+            color: black;
+        }
+    }
+
+    article {
+        display: flex;
+        flex-direction: column;
+
+        & > .flashcard-body,
+        & > .flashcard-head {
+            max-width: 50%;
+
+            @media only screen and (max-width: 800px) {
+                max-width: 90%;
+            }
+        }
+
+        & > .flashcard-body {
+            & > .info {
+                display: block;
+
+                & > .author {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    h1 {
+        font-size: 1.2em;
+        padding-bottom: 15px;
+        border-bottom: 1px solid gray;
+        a {
+            text-decoration: none;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+}

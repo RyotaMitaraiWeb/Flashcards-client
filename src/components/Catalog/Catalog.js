@@ -34,7 +34,7 @@ export default function Catalog() {
         }
 
         fetchData();
-    });
+    }, []);
 
     return (
         <section className={`catalog ${theme}`}>

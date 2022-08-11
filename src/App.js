@@ -16,6 +16,7 @@ import DeckInfo from './components/Deck/DeckInfo/DeckInfo';
 import Catalog from './components/Catalog/Catalog';
 import Random from './components/Random/Random';
 import Profile from './components/Profile/Profile';
+import SearchResult from './components/SearchResult/SearchResult';
 import { updatePreference } from './app/slices/preferences';
 
 const Home = React.lazy(() => import('./components/Home/Home'));
@@ -84,6 +85,7 @@ function App() {
                     </Route>
                     <Route path="/flashcard/all" element={<Catalog />}></Route>
                     <Route path="/flashcard/random" element={<Random />}></Route>
+                    <Route path="/flashcard/search" element={<SearchResult />}></Route>
                     <Route path="/flashcard/:id" element={<DeckInfo />}></Route>
                     <Route path="/flashcard/:id/edit" element={
                         <LoggedInGuard>
