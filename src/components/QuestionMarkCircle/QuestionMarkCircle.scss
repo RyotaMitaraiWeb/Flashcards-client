@@ -40,6 +40,7 @@
         .content {
             opacity: 1;
             z-index: 1;
+            display: block;
         }
     }
     .content {
@@ -52,10 +53,11 @@
         padding: 10px;
         right: 0;
         width: 300px;
-        z-index: -1;
+        z-index: -14;
         border-radius: 10px;
         font-size: 0.9rem;
         text-align: left;
+        display: none;
 
         @media only screen and (max-width: 470px) {
             width: 250px;
@@ -80,17 +82,15 @@
         opacity: 0;
         vertical-align: middle;
         bottom: 15px;
-        transition: opacity 0.4s;
 
         margin-left: -10px;
         border-width: 5px;
         border-style: solid;
         border-color: black transparent transparent transparent;
-        z-index: 2;
+        z-index: -14;
     }
 
     &.toggled:after {
         opacity: 1;
-        transition: opacity 0.4s;
     }
 }
