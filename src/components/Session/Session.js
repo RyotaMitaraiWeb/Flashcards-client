@@ -48,7 +48,7 @@ export default function Session(props) {
                     </FrontSide>
                     <BackSide>
                         <Flashcard colorTheme="purple" context="card">
-                            <div className="flashcard-side">
+                            <div className={`flashcard-side ${!isFlipped ? "hidden" : ""}`}>
                                 {cards[counter].back}
                             </div>
                         </Flashcard>
