@@ -11,6 +11,7 @@ import validationService from '../../../services/validation';
 import { useCloseMenu } from '../../../hooks/useCloseMenu';
 import Error from '../../Feedback/Error';
 import Valid from '../../Feedback/Valid';
+import QuestionMarkCircle from '../../QuestionMarkCircle/QuestionMarkCircle';
 const { register } = authService;
 
 const initialErrors = {
@@ -135,19 +136,19 @@ export default function Register() {
             <h1>Регистрирай се</h1>
             <form id="auth" className={`form ${theme}`} onSubmit={handleSubmit}>
                 <div className="group">
-                    <label htmlFor="username">Потребителско име</label>
+                    <label htmlFor="username">Потребителско име <QuestionMarkCircle>Потребителското име се състои от между 5 и 15 символа, от които само числа и английски букви са валидни. Потребителското име също започва с буква.</QuestionMarkCircle></label>
                     <input type="text" id="username" name="username" className={usernameStatus} value={username} onChange={handleUsernameChange} onBlur={validateUsername} placeholder="Потребителско име" required />
                     {validationErrors.usernameErrors.map(error => <Error key={error}>{error}</Error>)}
                     {<Valid valid={validUsername}>Потребителското име е валидно!</Valid>}
                 </div>
                 <div className="group">
-                    <label htmlFor="email">Имейл</label>
+                    <label htmlFor="email">Имейл <QuestionMarkCircle>Имейлът се състои от формат &lt;име&gt;&copy;&lt;домейн&gt;</QuestionMarkCircle></label>
                     <input type="email" id="email" name="email" className={emailStatus} value={email} onChange={handleEmailChange} onBlur={validateEmail} placeholder="Имейл" />
                     {<Error valid={validEmail}>{validationErrors.emailErrors}</Error>}
                     {<Valid valid={validEmail}>Имейлът е валиден!</Valid>}
                 </div>
                 <div className="group">
-                    <label htmlFor="password">Парола</label>
+                    <label htmlFor="password">Парола <QuestionMarkCircle>Паролата се състои от поне 6 символа</QuestionMarkCircle></label>
                     <input type="password" id="password" name="password" className={passwordStatus} value={password} onChange={handlePasswordChange} onBlur={validatePassword} placeholder="Парола" />
                     {<Error valid={validPassword}>{validationErrors.passwordErrors}</Error>}
                     {<Valid valid={validPassword}>Паролата е валидна!</Valid>}
