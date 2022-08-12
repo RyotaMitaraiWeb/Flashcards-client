@@ -1,5 +1,5 @@
 async function request(method, endpoint, body) {
-    const url = 'http://localhost:5500' + endpoint;
+    const url = (process.env.SERVER_URL || 'http://localhost:5500') + endpoint;
     const headers = {
         'Access-Control-Allow-Origin': true,
         'Access-Control-Allow-Credentials': true,
