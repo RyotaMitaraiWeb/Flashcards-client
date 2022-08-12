@@ -19,7 +19,6 @@ export default function Profile() {
     function changePreference(event) {
         const value = event.target.value;
         const name = event.target.name;
-        console.log(name, value);
         const copy = {
             colorTheme,
             theme,
