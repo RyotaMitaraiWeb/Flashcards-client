@@ -40,14 +40,14 @@ export default function Session(props) {
                     onClick={flip}
                 >
                     <FrontSide>
-                        <Flashcard colorTheme="purple" context="card">
+                        <Flashcard context="card">
                             <div className="flashcard-side front">
                                 {cards[counter].front}
                             </div>
                         </Flashcard>
                     </FrontSide>
                     <BackSide>
-                        <Flashcard colorTheme="purple" context="card">
+                        <Flashcard context="card">
                             <div className={`flashcard-side ${!isFlipped ? "hidden" : ""}`}>
                                 {cards[counter].back}
                             </div>

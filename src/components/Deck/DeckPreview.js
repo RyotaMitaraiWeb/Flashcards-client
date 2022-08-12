@@ -14,7 +14,6 @@ export default function DeckPreview(props) {
     const [deleted, setDelete] = useState(false);
 
     const preference = useSelector(state => state.preferences);
-    const theme = preference.theme + '-theme';
     const colorTheme = preference.colorTheme;
 
     function unbookmarkDeck() {
@@ -34,7 +33,7 @@ export default function DeckPreview(props) {
 
     return (
         <div className="deck-preview">
-            <Flashcard context="preview" colorTheme="purple">
+            <Flashcard context="preview">
                 <h3><Link to={`/flashcard/${props.deck._id}`}>{props.deck.title}</Link></h3>
                 <div className="info">
                     <div className="creation-info">

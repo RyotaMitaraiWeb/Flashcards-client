@@ -18,7 +18,7 @@ export default function Form(props) {
     return (
         <form className="flashcard-form">
             <h2>{side}</h2>
-            <Flashcard colorTheme="purple" context="card" focus={handleFocus}>
+            <Flashcard context="card" focus={handleFocus}>
                 <div className="wrapper">
                     <textarea rows="5" ref={form} className={props.side} onChange={handleChange} value={props.content} maxLength="75"></textarea>
                 </div>

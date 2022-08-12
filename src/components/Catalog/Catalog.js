@@ -15,7 +15,7 @@ export default function Catalog() {
         const threeFullStops = d?.description?.length > 200 ? '...' : '';
 
         return (<article key={d?._id}>
-            <Flashcard colorTheme="purple" context="preview">
+            <Flashcard context="preview">
                 <h1><Link to={`/flashcard/${d?._id}`}>{d?.title}</Link></h1>
                 <div className="info">
                     <p className="author">От <strong>{d?.authorUsername}</strong></p>
