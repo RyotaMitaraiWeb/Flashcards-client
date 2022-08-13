@@ -1,10 +1,10 @@
 async function request(method, endpoint, body) {
-    const url = 'https://cryptic-citadel-63332.herokuapp.com' + endpoint;
+    const url = 'http://localhost:5500' + endpoint;
     const headers = {
         'Access-Control-Allow-Origin': true,
         'Access-Control-Allow-Credentials': true,
     };
-    
+
     const request = {
         method,
         credentials: 'include',

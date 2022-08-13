@@ -19,6 +19,9 @@ import Profile from './components/Profile/Profile';
 import SearchResult from './components/SearchResult/SearchResult';
 import { updatePreference } from './app/slices/preferences';
 import PageNotFound from './components/404/404';
+import FAQ from './components/FAQ/FAQ';
+import About from './components/About/About';
+import Rules from './components/Rules/Rules';
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Header = React.lazy(() => import('./components/Header/Header'));
@@ -53,9 +56,9 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home id={user.id} />}></Route>
-                    <Route path="/about" element={<h2>За нас</h2>}></Route>
-                    <Route path="/rules" element={<h2>Правила</h2>}></Route>
-                    <Route path="/faq" element={<h2>Често задавани въпроси</h2>}></Route>
+                    <Route path="/about" element={<About />}></Route>
+                    <Route path="/rules" element={<Rules />}></Route>
+                    <Route path="/faq" element={<FAQ />}></Route>
                     <Route path="/profile" element={
                         <LoggedInGuard>
                             <Profile />
