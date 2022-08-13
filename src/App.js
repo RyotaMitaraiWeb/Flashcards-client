@@ -18,6 +18,7 @@ import Random from './components/Random/Random';
 import Profile from './components/Profile/Profile';
 import SearchResult from './components/SearchResult/SearchResult';
 import { updatePreference } from './app/slices/preferences';
+import PageNotFound from './components/404/404';
 
 const Home = React.lazy(() => import('./components/Home/Home'));
 const Header = React.lazy(() => import('./components/Header/Header'));
@@ -97,6 +98,7 @@ function App() {
                             <Delete />
                         </LoggedInGuard>
                     }></Route>
+                    <Route path="*" element={<PageNotFound />}></Route>
                 </Routes>
                 <Footer />
 

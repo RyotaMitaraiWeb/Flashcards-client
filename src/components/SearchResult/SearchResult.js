@@ -7,6 +7,7 @@ import Flashcard from '../Flashcard/Flashcard';
 const { get } = requestService
 
 export default function SearchResult() {
+    document.title = 'Резултати от търсене';
     const [searchParams] = useSearchParams();
     const title = searchParams.get('title');
     const navigate = useNavigate();
